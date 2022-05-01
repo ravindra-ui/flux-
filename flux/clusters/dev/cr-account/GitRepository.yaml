@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: cams
+  namespace: cr-account
+spec:
+  interval: 30s
+  ref:
+    branch: master
+  url: https://github.com/Tecore-Labs/cr-account-service
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: cr-account
+spec:
+  encryptedData:
+    password: AgCF23rR/LbIcKL3i9LFq/32YZYvo17CYWsbDn1PKgNyZh0tNZA07LTcpLbaX+zqHYkPVXz8jMFWNnoe+vLMn6uIQI7CfOXFfW6xG3nw0wne+0iK7HcRM+Q6URXKg8u10Ud5asNa4/CgJWtCzz1D/yxMGI0n/OlM1IF5ElGp4UtX4T9+XRCxuE/TG1tolv4Z/Lb60PPAhflvihnxAYrWNf8BTPyCO3DP9dF6oidNmIaFNBo5uUwFc/Mtx6CM28pcIzrvoA6I6gBiAr0YiUiPRoflI+uvsKIC2cYw7jXK6Me8N3+hboCF+BlVyqBzlqJamDnC/s24VxRJKp3l87wmQaH9RRXrnx+GSyqGirselQRxtInIrEHxofS3Tb5+yuBfWPAAFrrqosho5qA/RrSu/p67kHFsC4v8uqysEhfBl5+He5WpztLWNXp+1RfJaHzvB1ibvKrR031KDvXt1D9X9Ue7b7+B+XSlIqxHaP41vZXT6/RHZP3rOr/TLYXEOPnZJRYIwyg3Am8lTjaW+obYq1J1gy+GPWLcPL/pOTfPx3vd2r61G6CRFCql6cq3bbOVusA5mPGfaqQ3c/ze6hmCLyaL7PEiEtb+e/VBpy6EJyBjEcnGo6w1NKzKjhhE7/J/zpS8QSS65r9Z4vTmua2SxQ1fl9QzPVXD8rlE6E9a/Okzva4Gpv/2sxkVYGEh/rGqU9ab7eLyKB5fe38wJruqN4YKsShRlHq3M+mtBdTjfRyQqjoB6S44gorB
+    username: AgCRnavrHIex3hbuPBvrKLI4seY0T9NKz7DI5c+5sYTvWkwGD1PTLNeiRnPFelxjmoI6It53Lao+7fM2pgRy7SjFygPK7xiaVIqkVL2eKZ94kkju/zFxsmxWijV9Mk9luY+k9t8H/+qQoQpsoTZAAs3yr9kWvv/NVULeAhWOubuZa1jMCd0X8lxlM9yRD6mx53bv8U4/IqHTjbo0gOsNKpJJ70+iMZo2SkKmaHTP94UoNPFH0lQcYER/Lp9y9RZ95uWAeqrhJApE/EbQthzjDMkvB9yORKBmZitmdJ65HiULdSN2hSnpFR+x7/ypxbT/LetmH8Lw9UybZpETL7tsN2C9VR23TJNkAFHGGvke6aOAbnpzXhns01FUK954j9CbF0dr9ULVWU+dE6hn7bfcv7acKIWWzUwqyjMMTdKFFbRVkUlj1uaKfz6hqTZLqwM/pCA/QENLcVvKv9oFA6eE3gWniEAnL8lEjcwIfvrRUCSYAJ8Rvo7C21EFe/jFYfiUl+XhVJqzBMoPrS/J4L5M1JeqXk1wx/JAzaNBcn6kp+aK0DVlOMgVUHNUbzGpRBorejUQDfkwJguIyhGqTf7VrJEMlEyujnOEN4gZqiqwBe7EpD8NRhBGBUH7dGk9IqYySEjC3SrU4DEs867Uhs8U4cvYPMfrhJERC00wsgY2HWCRUw8fsbHJSAPzsxuyrqxPmtkzpa/IMRO0PNV5c9tQUcvHK20=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: cr-account
+    type: Opaque

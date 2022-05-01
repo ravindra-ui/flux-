@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: lsss
+  namespace: lb-storesearch
+spec:
+  interval: 3m
+  ref:
+    branch: dev
+  url: https://github.com/Tecore-Labs/lb-search-service
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: lb-storesearch
+spec:
+  encryptedData:
+    password: AgBYqI+PcH5CqT7AVvxdcY2Ij3s3UGmej+YQYtrrGY5QAHlsZCKwFQeVqmZlhYXo5+xIW13IMUIsAy3t+U2I4ldMjZ4teOSn3r0Oo/Hzsc8hu9DbGu4H8g6UgD5bo2Fat+Qe5x0G4IlvoJ6XPI+XRnDhhCBiF2sOswBDmVIVnGgt9VtlSYxEUNgGxVBQtqF6n0t/VDFahhHOuFsSn7Z6a2jAs8mFlc+RrWaWS5AhIE6KFM75i89iFtH6QKp5kiBVhHz4xotiyM7uXRu3ULOv3xxDYsFhrFy9Tbh2IcWH75c1hk6vlvhcIWOyUL8bQbBc/PHTJ/A/SA9WINZIIk0NYSN0qPs/cjTIqNfCpBs9lD1UgXzh3YXSEOSuWVVHk/ySxeeox8/VojezEDVAbmY0hvVpxqsfPTANud048fYJpBQ1QRy1d3EUCtpejpNmggesgt6xLmCenpbPX8elJrDz1NdKZf7zaiCB7lClhpnQBGTmAAGrIoi4VkBFfOQPtbAg2+EHLRDowsuURfs95QjdXs3VCHfsITwt25cT3gsg+c3DSHBfI66JRRFxAjbTm0fvLJnK6dGA0OnucuR5DrYeDc/zLP7PTidQhLGOW1nDCSi1QwG9xa82AQS15QwyXseqootkErf9zvOjghUMziWplvPdJKRk9XaK4eXtcJPW94UHzmBu/x/RYT11Z+3hVeq1i3yc4m+dxguvCwvlqSvaVpd7Q4U6FnYWk7zcV26+Z2BB8LTUtW3s7KCT
+    username: AgC2g7Z7rXiLDIWBJpp75GyCW1Ntp6Sr/06JfUf2vw5qJqnLK+uOGzxQvFpsC5p4se7pC5lms/cR4LkT23CKX6Y5daPYMlRvySsFoaLrGF3+sdH+M5nvhL0BtY/EU5JJ2ftMbD44MtnQiTfAEUkC78Z3dBysNs/2p2Tzxr2rEkRaAYHAoXuRztJ47R6yljhfcj2TsqGjVjOwxd2aNeCkotC+fMsviTHQOzd/yAR8ucUvRPpwSoRSEriYjUIbPqEZ7IOCCqJ/BLP0I9rhbkuptL2+wHAHwHDMpzD6tWaeSqreBEZ4t3DJZQxxvwhDnQ3LN8iBV2yuqrNuQ183rwrFvai2+xQkl4bTeCCU5OFwn3qVVBuKXZkTcFs6UXeKWE7dDirGZxlCAXPYx5BCW4AGq/taGmYR3PIuKgHsUlp6kufWf0Vlk5TC0SnZerpxwL/I9z6hP8H+CQzOZpz2zIvGNhiFgWHHtkMlL2AfTrbm9dd8L5EiT4pUcFoT2ApugplYdNshYfrqMc9YxakPxdzdyOSd2crP4y9pyDfRkvEHdhPMfEl/C+6s1ofMOMh1iYqqsuqNI87El+jo8p/+/oop0pJIQUY874tDNunwpKrig3GbraC8ntPy2FXc4lyqqXBUNQ9kTblwDAHKiheqgMUlKb16cvcTFXAMs6TVxGA0d+tFTD76GLgsKP12u5nbIN5E6NrMuJ6b3BKfletr2hurM0Eh4c0=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: lb-storesearch
+    type: Opaque

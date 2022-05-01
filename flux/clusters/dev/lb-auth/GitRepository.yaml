@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: lats
+  namespace: lb-auth
+spec:
+  interval: 3m
+  ref:
+    branch: dev
+  url: https://github.com/Tecore-Labs/lb-auth-service
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: lb-auth
+spec:
+  encryptedData:
+    password: AgDED0xBbU8x74sI4VSO3odAZDcLwOMsHSEmdgRhOLuCiGR4PxMgPxoU786IRQebkHx91lCsvAGITKWeuY+vBzXx2WQ8vouPhPAjjgEb9loEOcY/lksQKi3QiNm2hbNoIHsOkWej2leSmav6GH/Q3N+dM4KOBIfG5NG+OAnlmb/ZtrkXMwtj+SJBhnueCnpgcIduFXzMVJmvmd/YZZsvvbculyi2yB1/K87vQMII7aqKgdPm3WOtcVSy189+/YfLjyk0nq2NZoh5kECSeftuYDP7241qU46nPt6pXpZUotHEgroS1OAKLJwxIdwL1L5g1EMrZZEsBaMpkJkPbp+8eLLqgs4UusZIeovvw1qbKm4nwdCL6I9K7caJRN/7/l+VtG/AfIOURtA6/AgR5fp+ZKWssvEQEfuf/iEpG7fYZC/xdGdYSezh11cIMxV1AZk4M3/Qdb5fioPTS02nju1dnEi0rYkwKoZVcZ5eO/+e1RrUx+Xd7Al1H/K/AK7HwvtpMLzeW5ZXP94UgDiI4WUxsey5/5oLANP19gASzT6YytRCCCDtKEd1+kZx5Dtn6bYZVSizAsk1ePzLKVL6qDDfZuqnBvcIfVjS3liTzNaiFh4rR2KHqFx+o/z8tRK671qmFaaCLcwElQD2JCkpoT4P9nat/YA846CHzmMwUJWqSsF9qeCBQwOQVfdaHlEhUMG40rlqDaDgJvKxi+LtWsX/JL+ZdV/uZQecNhahejJt5iJENda2L2v7KFoc
+    username: AgA40RqZI5fMsB7cfOKOYYVUJ3Z7j33dav8FASZAQOXkkkwRJwWL8djy1sVN2lH4GU9jPyt+NhOHmktJuptUoLJej1JndxXvY5CSfPrtcCugIgbWsmzDVdoivJkzMkVIdCbAjLJGzXNJ6me358vae6OPCCBEWDbrBJM8On1xPlSCWQhkm5Zf3qP0HOmLxKsmvgbxEcdfcMJE6W+jPIODXKodNqIa9nemHN7+37L4seyHzlMOaH7ddUGKLU05TABFkwL9O3OpXsBD9rDN3Lv/oSmlTGZElxM2aVeGXJa3i5kKcTqhwUGydJcFrLczajMY8LDNWc5rVsNFmEuyJbP87a24nAkVcqO2clIPIT2+coDI8lmHJQFbhixS7YyWaytTlg71D9919ehlj4AteA16dhwUWyMbNwRMBJdR1StbgC/1Y8Qdv0DzbpXjgO04QwkBa93mMCq0jjoydjU9AqYL2l4lX5pbg9mhlmW2ruabeatLRc8M1RiC4yTyphZUpVddpmCF0mrrIMhBTIub5tGTuuvPQideQTmljEQTzh78zVxTiZKnJ1+zbBDOq0D/zVvSNdvb0uD7Og3iyNIRjTFKJ+PGYFZDsxvBpQ5mY1sICYppwsx5U0zXXEIssKXxo4Clc5g1rsfiEI2KQvESbInXhcl92/fmUyxhWdF12wX2pGrFq4ioO6QLfB++G45t/Hq2F+4RDCtXv2+zmxCE2Lftc5BVPfU=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: lb-auth
+    type: Opaque

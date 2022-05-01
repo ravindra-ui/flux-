@@ -1,0 +1,15 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: lsms
+  namespace: lb-store
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: ./charts/dev/lsms/
+      sourceRef:
+        kind: GitRepository
+        name: lsms
+        namespace: lb-store
+      interval: 3m

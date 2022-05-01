@@ -1,0 +1,15 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ctcs
+  namespace: ct-campaign
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: ./charts/dev/ctcs/
+      sourceRef:
+        kind: GitRepository
+        name: ctcs
+        namespace: ct-campaign
+      interval: 3m

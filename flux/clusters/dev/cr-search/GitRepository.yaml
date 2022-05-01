@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: cgms
+  namespace: cr-search
+spec:
+  interval: 30s
+  ref:
+    branch: master
+  url: https://github.com/Tecore-Labs/cr-search-service
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: cr-search
+spec:
+  encryptedData:
+    password: AgC4veM0OnZhXFhKpion9iyKwmPutQ4abS5oXKEDMp6zKStZsLivjDPo73n3mxYk7rodUoaw04TQoExXjnZxI9Ag2H49owoduHKtEEKEMnRuznNyXQiv7CmilrTo/qh5DP+WSrCDkvvlPsZYurZz1LOuM4o+a8arXpV/XsOj6Z36FLb2A3XYIiufGRRWrzIjmMn88glYp0ENoYLs9kgx3BN6gvSNpNe+qtWNooM1+YUf3F1gZN5juZbH6J84s7QwkhDFoOHASdFT9KimuYEzyU3mnPO4U+53+N8tUG1TJX/qLE643zXhr2al36gba/2JQYUfxUrPs1zZtuSClK1wUAk2WGvx4N9nzJ7lViQCbD6sBeP1736dl/D6/00Ji2I+I9GenOitvkBAzEVepxjSs8pcFVzgCPV5bmHl0VGYV8cTAf1plOEs770GE+Yn6oaOsq+Mx3tO2DWEVHqqaTeVRLmkbGU6SqnDMyMBtHveGL9o3J+cbnTVbO3LKy9UfodF20b+0pC5T0mNrnavSh/PaoBRnu2BCUnNgMabMtY+nPhfJHGuK0tN0I3WbzVRBkqqoUsPE7Buh+u7GV5vRzBogkWgVWfmX3Mva0vsjAeUSmbkWyB0haaIvMqOZJeWZ9CcJQK5kAF6G+/k+41GpUyuLNKxbOhrF+BDEskDVWAvTotr1e8ooSsCQ5xFvDwHANG65z+MQPA+/XKJ1EJ+N1Qb/yqPlbyzRZJLBl74QXGgLDZzbOdnX6jotD69
+    username: AgBNyoUt+26WUEHYr4ZatQyjdObQOg2UNGICBsrSZNYBW2OLhoGKxYIrmQtGDe5/QJocrftm03UtLuLGU7hih52NLzdhA0YEqFcdVWvIXdTSiXwCdJ6UKfz3dmK2mS7EL3VcvbXjEkCPSFD/RIFuxVAThUmwRxM28uvQv2ZqiWo5RLu20aNIMPfQQMdLAxt3Z6NzXc3gx3dDUfkZlyGc5P+Zmn2FR4Q4We1/jDrhj6+EcJOV+viEDkZLbCA3LUhpDbVnlX3e+enCb729KWFSoRdSiH2m41b+KMrhubiH9LwGrFFvucFkKMQ3X0/ieyzmfAKXyvdog+N+YQvAXhu6dfPlmU1b+UWHHP0CG9Ll8he5CFytw6q/3Lz5DovTuCvLGEn9e6wNusUBzTs3tzXdZA3eWx96vndlqHKjMe7BQA6duajUVmpoE0Ki2IrC7OZZLSed00LP44PhMFZj41JCN9dOf+a3TVtXZZWquhKsaSgefx9V8gBCB9KqkHIHU2oWXprOGXMN220YFD5g/HWu7PtUXIfpDSzgb6L1ahyv4GnDkCebh5Z/wfzsBJcsp0JmKjDtQj+ADudlB82FeoznbluaJvpGZU59fHbv5mk74dRW++ugGMoqDhR8ytYAqur2QvuIcX38kB8B/b3w0mKYLWnfWYyvWtWDBUk7P6q18IYSIb7kDtLm9klyzTcVDuQk33MYXOZHxqc/Kjoc5OJsg8mUpz4=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: cr-search
+    type: Opaque

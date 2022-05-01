@@ -1,0 +1,15 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: cgms
+  namespace: cr-search
+spec:
+  interval: 3m
+  chart:
+    spec:
+      chart: ./devops/gcp/charts
+      sourceRef:
+        kind: GitRepository
+        name: cgms
+        namespace: cr-search
+      interval: 1m

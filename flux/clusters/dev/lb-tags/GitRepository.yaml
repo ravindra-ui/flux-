@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: lqts
+  namespace: lb-tags
+spec:
+  interval: 3m
+  ref:
+    branch: dev
+  url: https://github.com/Tecore-Labs/lb-tag-service
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: lb-tags
+spec:
+  encryptedData:
+    password: AgAJl0cSpkw6hAO4TYP1ma2k1lu0lDIAags+sNTVydp0f8wRgrXsZnTGTOEy0qCsJH1TZbavN1jqT6bElaGJY0Ksq2eCI24x0FMpAPa7DpjnOLnNOrnaUKErRLiibDHK8uShQy4hMU6OoP+1Mkxje3axEqgzwDSy9w5gDHZ4ayRGbF2Sp66KbBdRPNqDe182dYdACZB/VI1iAaBVXj0i9yNhOt9MLT0lKi2L22tfp8UPbV4ZYnd3said0LUioBR2VLPBNpDde8Dpg6oe41x67ZO5gWQC/pFM5uGeYM/7036gtnhHJI3Zj3Jak5+mZTG5gU8KcaXnrUy+rnj/YRUwxca/GAP55CH3PjtX8Wps74orPu0dSdht1t3cHPeDotuADO1JsDFcHVWl4DZ2W5s9icFdAyjk7T9KIY0esApvV9tVQl1IBugOG7TUCTr+IpQnZwNcHVqdR7XVlyNp4mQJm9eBRhTL/EaAqBqacuBBxUHDs2zUBXWxD1dhEyzZFSQkYGqCFbKAwcZ0LCs4olFpE3TiFiTaexQ4bdcXZyUdTavZBXgAoD/Rtx+MWfO/py9lxfZyRxt0LvRKZDqQJULXmA4iGoeX5+M0ggOATn0re3bc2RysmscSkOmak2gohB72rumbYgeSIHVd1iZsi4nYbIRINGv3jd/duVAHCGAy5NiyhJN0wZbxrgCYc1B4Z8uyS6AQhl0cV19I6XvTghqcpOYe5FHAinYcuIRGdcQ2QZo4jtyO2E1OL63s
+    username: AgA5h47XO6p8N0aSCt2UqLz3zqSPohas5stLYBolSnod5AsjNd3gJT2IouZNmAvF9quR5eDmqTvg2vKDFFvz+DYJeH3ykxNgScAULlf0OVVHjnFHChSthb24wH4OrTKNoQ1Z8iIENkPv8UvOgkZclpusLPvLwvswf0Nf+OsnMuYZJ1Fuqle9hGXkJqkeOZYBZBE2a1qN2ETgnepY9nv09GNAp8ZH1NMpt2t7cGvRhPD0VPrrS8290e5QNDmi8hGNXkbui2tOmMEYJoKpsQr7MMUpuYuT4wUYC+Tr8f5ZfDo0tao0Cbp7wQ/BC2ZqnOobeJ0kgthvtHY24WQDGsZv23n2P01lcEuZGVJwW+to1/9lt07XXDwfMsjXCfwA1kaBv9II+5S2qSSt9E/310A+H+0q5dpoM4m+8eNHyF0JtnjXxUV7qdy/ywWGqyrFEBwLH1rqROLplfipMBoxyDe9KP+svuxxMKFFKy/4/ovj37PSK9SgqMzBdMJlwL58o/eUWc1v/suhbBUorIIc6AXTiTokWgjtm9HIOcCzN4likul2sOt4C2Yb8LidlKW5pS+pfrFbb/O7+1epIab/vfptLFLhmqIaf7FHc3R1SOVl853qeGHeLk6T8V1VSI6Pvq0qG+OzPJ6g3qB8kYedIQceLtaN9Q5zTj1T65+aOCkxmNDTeDLrOo8bAC/PTo3WmR3t1LnSMtUUFTG/2gJcTmbgrp7Rl7A=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: lb-tags
+    type: Opaque

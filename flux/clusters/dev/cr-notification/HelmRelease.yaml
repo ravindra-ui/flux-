@@ -1,0 +1,15 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: cnms
+  namespace: cr-notification
+spec:
+  interval: 3m
+  chart:
+    spec:
+      chart: ./devops/gcp/charts
+      sourceRef:
+        kind: GitRepository
+        name: cnms
+        namespace: cr-notification
+      interval: 1m

@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: cims
+  namespace: cr-filemanager
+spec:
+  interval: 30s
+  ref:
+    branch: master
+  url: https://github.com/Tecore-Labs/cr-file-service
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: cr-filemanager
+spec:
+  encryptedData:
+    password: AgBHb5/0yG+XTAAkx2Z8I4mznecPEQ04b5NqOBmvdYmVvrMEb7F0SK8I6aBVBSo0CKPF+swUWTIlFkOaEPcnaebJUhpjEIwKYvLSMro1ck6Uy00fvka7hHrNSFzkymM0JAIy2EbCmj4WYNiwwsASe7accPsORlzZ2w8F0miaREcchd9btVblEYqNOzWy29KudEFm919F+KOdokN1mMzheOFBU0qr58TGhG6FURyqQicvCOCulZhc0/HbL131QvUQNxglPXYuSUeDy8K4tHSBAjFwm/t44AQ3KNNxLO6m3lnTvtbifzILq5Jzahw1w83R8SHI/7Gbx4UY020DnitzuAfIcs3DuY8Z8E92hsMs1RlHp0ZOuJd6QgQa5WEt4X5BnZ5O2+T6xOgjRInzVep1JOThiju7Bv9Iaz5nRlzA5v1w1oEoY7D26nNE/AmcuE9/OZ2Y5NJOmOFVXS496Flz3kqIishTs7SrGp1g/jKwn/26XRbfC6faTy/09MccMKrMsZt1+vHql5aD5RG2FW90jms5k50JMFVXyNmx9jL1ZluOechFElTD6fHsevnK4818KSaF7L3NRTbpBtO5yrha4SbqQAOfJXi15KD9AgUooj8OfP4bLAx84+AOzdUJSHPFI/kI2Ji6DLyH3UchwN1weBIBLvsJlJ4E3WV9PREkSgBSc7RlgpLiLqMTDcDhivQyDy8g8YUZsKMqQ/upRgbRFfQ7fmT+hcDXnpWrY40WF+BdI0r5op/cBZbN
+    username: AgCIl82ZdtfHndAbpcFNehWDkjeKQ6tAoOnyDv+GShdRPAOpfKcf3NIwB9ldvBgXR7r7006AKnd0y/LQlfoeh5g+rgkYSG2LIiLNxH4dIr7264/L2qd/9qqhZ8QjCQqFmSK6/rmOE2J4Qm06wvnfke9256GfdDLkif/s+PDNvk3SQlGDrhhqlKmG5ZURZgvkbboGICjUWsa2JDa91NsJgU/01vWQagDsBtb6bCpV4TfivxFeD3QUzAOajUlQbdHuqKIhDgu1P3lylOIls6MkU9onQAKUeTKTxPvJqFGBPY4FLawwQdDFYlZrQVHxlhit15jlHtzYwwbaj8jfyXGyHbmFFbEKJiXsv+tLsqyn7vTRwIbFfSzDHkYSK4wxYk+EZYN2APmF19NwrCmZNsruToOeAhcqhPKf5BrR1PJWX8ru4AsyS72vgEOT+P9KIMYnYZnZ17PMnP8LZazEebP+5j4i/cl0hjGZDgglCeO6ZpI87fnInS2eYZ94CXEJyg6FcY9FFkX/+wEz7e6D0WHE6uf28jCOsjN/mKvqcoQBvFJIsdbDFkLAjVe6Y5C9fX6bPUOXV7fOy+jb3UwmFDblJ1RyXf6aPclDeZY+brLXvlxzMjitHgvObkAiMUkpEa5tQ/+mQ9jIZ7FV9eJ24WM0FSlD71Y/zGApL/UQ9nHysiEXa4phzCzLTiiBlURzNbP56BxnZuPQLD265S2f0fA1pW+Zydc=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: cr-filemanager
+    type: Opaque

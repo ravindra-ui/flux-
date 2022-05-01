@@ -1,0 +1,22 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: ctas
+  namespace: ct-account
+spec:
+  interval: 30s
+  ref:
+    branch: dev
+  url: https://github.com/Tecore-Labs/ct-account
+  secretRef:
+    name: https-credentials
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: https-credentials
+  namespace: ct-account
+type: Opaque
+data:
+  username: b3BzQHRlY29yZWxhYnMuY29t
+  password: Z2hwX3VveDFrUVdyUVpBY0RLYllFaWl0dXdvNkVja004MDBBQngyZA==

@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: ccns
+  namespace: cr-network
+spec:
+  interval: 30s
+  ref:
+    branch: master
+  url: https://github.com/Tecore-Labs/cr-network-service
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: cr-network
+spec:
+  encryptedData:
+    password: AgDRgXA/nzTqyd+LNUUyU7+aeaem5aiPrx2twzbpSZ3QgeMzu8TVzkHAbR42jbILU7uD+9v7IEzuNbZ6x165FGcRGWlwZmcyUpw3E2WWlA0M5u7SAlUf7KfJKEsxKp1WrV5zfwVRT879jZ/7wvrFt8v7zkRvQPOSrcaEYca8OdK/d3fnXIKgcNvBFPHF47L+33itfR+oxzvXiJIM7bk+/p9b1YMWAl0AcIvGzjfBSi9kRagsKpCQOdKkswDnBINkUron1wPkQKS91akuhZ/HQlvmG3CnWg4sWsIl6/hPFQ2lUFKYXWsLP1IVgujDCzkKWQY7tB5YTF3SvNqvfhlWNbMDBFYuN4sLE+HTCQzwt4a6cJZ2lzHbSmF+UWB0KE/jk1Oh7hCPTpBVyp3zlp5hjcd2bX5Ys3TEUwYBMCHp3TSrpKh7vfvnWskps8bgomeNH10uXEXKqHTO0HSeZ99K6YRjb/nCRgaO4uuYVBSCj/ZTTCKhhnOWw6KpBoAZAaFEbyViK/yYAqKFE4dChpJIA6JxigbvUKLfuLyn9diXyYRvkxfcxFeccBXQwP0Gb3L78T/+6PwcMvZMP4SM8iQUXGOLyenkuZ541E3iDUGPb8ds/nZQvAO2JIfA/3HoLAhCq1vpq003GKa/l6Z3Xz3+GaWHEjtPyTFKcfOs81eDAbb8GhOAQUQyLodYJn9Ca4UKHGch0fzByNoXd3Iryivy/9z4zjPyyVrGuXQa6fZjteQ5GSYQg7WCrvBN
+    username: AgDXfJbKrP0R0GOudtLiC5t2rG9psiStv8OjaDl8A+FUYmP+3LwMxVWW5aHUKzF4ltDsvvtSWttzFG1t8AVyKaLKkS/4F7624C54vPD0BnC5KaZqK+JLVPV5cqOiUczghtTL+DpnfkjjnJbwpbzWtK8oEP+iQNaoJHSkTAyybISk+uK0iybzk9qxZm7wUk4u7uX9Lj6MRVa2N4o7nozJRDoXJaPoNC3EonPWyypU2HavAUmoGZFyK3dBts3B9NMdYr2WvqQx3L1AyqRiAsLSGrGReFuT2dnzobJ5E/ugD8+2cmXrDz0U30EeVFNmU2gD6I+GA844I17wzgbHhQKz4+L4HiWOOOD9UhLJnMNsxGIUIpKnuZzdgJKyMD7ZYecrjU3/JBmkDLq3L0+p5a/yiGM/bJgQ7FGORnuQRgA5DhHkmOWCo+a2oQujvTXFGFv+S+3umfbW1mvKZuf1XwKD5tC6TOZ5WTL95z9SqEzVdGPZ7gDGoVrJqwAcKey1MuP6sgOoKKtfXUFFPwFjW/RdH3GRdugE5gq/I1YWOcQzHcCCqdJbatU3zM8Qekb1fR6rldrmSgYjqDswilH4sLfSzzFwSoom10nyTznNFgiVlRxD0iPphk0vv1PCg5XiLjOVZjWdnlzbMDVftaWiu+4LtVrZEC8/iDFqlL6E+CUNrxRnZJ09CNUhVXERwMTT9LRAmAkv89x+8Hk6BDHEUKJuQWgRYO8=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: cr-network
+    type: Opaque

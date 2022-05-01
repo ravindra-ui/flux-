@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: lpms
+  namespace: lb-payment
+spec:
+  interval: 3m
+  ref:
+    branch: dev
+  url: https://github.com/Tecore-Labs/lb-payment-service
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: lb-payment
+spec:
+  encryptedData:
+    password: AgA925OO7G/uTGG67csodBIfjA936wvdOpFEuFylwViciDTy/HaqCPYVdK5CwHD2gUNFvTXOcmepOhmmeV9g78xDSeZSM4uPe7Oliuved49Yh1L001t0GgDGh82leNVAkNdDecVnnx5qETp3GylSYwpoKSxDyBkK9ewWnQxTywmHqHHagwSQYfKW3xQ+IZQFYBoMIKpKeFhNzNPx6ZoL9VaCtCcCuZl04q3SKYFnNy/Y7OfKqqEdQecT1e9VpSYKSCSAVlA5eZZwUNxdH2zJlDY0Ngzt9DoKfLqv3HoqTiOwUkg6DgJ32Ms93ZqLU3MJJz1+7z/5aOuF6Ck4TQwRf5OYp2DHM7tkZxgJXRpQusF0xCEyAVSBoo78yxdPNICI5Jc8F1uNgKDaYxVgKdl1G1bEz2hxV0UAB3iaRVkD7HW5at4x/0J37Lh550rSNSjbDG8Otg58vzqj7+RBo6lcP8rpitaMmENyoU0GYMrghNipbktSLtahZiXU4CjdZ8ar1oSwXoHpML71Z+zbp3uN/G9iGCpRF+FVyqnFhAn7Q7TrKSBWCw9KhnK55in6H48CLlWZT6G1kHQIlAOGXY07L/YCXFjsEoxRCmTdcgHcSxcKKguzK7En/ZNBCfy875XAOZpQEHM8Z5gHKL8/+/6svArKysl1OU8RpMAcZBS5Usj7VRaGeOrlIc6nf9i5T7urwsXDCvL8Fi4PhhIOqrxT/kzj5dBC+qTSrTo4R5NatZ9gR8yCybTjOwjT
+    username: AgBLneyzJQCjZhpI1sg7Ue0FYohH6n/irLCBkL8TH563s2KAAHmDTcGsBa/DZUtjUDLtSQ+pInGzRd+ui47a42pAAcZysnzApywffgki83crv0irfo+TFisPxTT6t83zbUOujZgTTu+dUYzZX6skeGHGr2yoPWBirCDudW2yCYK8zJOIQaZI1Uq+FV8kIK3IGAQ1k2ubBDx6wBqiDOUnvSjfGl4C1bK0yczgO9wrcErh45Ru0Bf1XLKkie2pfLj/iN3rZ5nwCDjMZhVlBi2mKCcEHxAtmA+aNhHAV2brIHa2bs1MoClMGcsnf8OLkUsZvEju/6eRos+07x9iMSb1kcJDiqVcJWHJMjRuF3/kvS+VpNlTmnAJ4hKjAdJqk2lGjlmWrqtpdijBaPU8q05FXEMmTajyg1axdFvbaXmEIKOdpJRQ2DiMZJGv0zrsBGHjRWbhJOOOHeHhbxNtSyXn92EeUOol3KXncYLmUau8F/cSjcuAXLserg8gzIuAqzMyuWKuZBkbApSp4EMJuSxMKsl026dDwDtAU8v8FLR4KeKWc2fwEeEFfP6uV3lVWDT0+9nyWXQYS/uETIDA3/c3B5Ii6N/ROCl1K+NoFIUfaJnyEPQf2iH5rLS5KAwJjLUH2aj658fGr+S8HJ05DiRs4LVof+ne9sjJ2UwggyA0FPy2v9uveerUKqygKqlKINkohYlJfWLKyhJc7GB5LcQhHI2DgPg=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: lb-payment
+    type: Opaque

@@ -1,0 +1,44 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: slack-url
+  namespace: cr-auth
+spec:
+  encryptedData:
+    address: AgCOrpb0lrMUONI4NPdnxhxPMVltPrpSrKPr1BISTtlSei5ZtrXUllLUlxCLPQh+z7GC2/Hep91Ov6fE6E71s2U8xQ0GaP7k36vWzc7T9TWLHOCn5gREbzbceFAjXAs7zcxhFCCIZnIsl6/NA3jM0bocjh3bfJtbKlFjlwMflagpkY3XZydAdtq32g30anDmDd54Lc0dBJ74srr6vQ0wOiBfZPtAve0+ZNqA7JX9EZCrSaFTaCBqCm1ei9xo5bAbgXvkkT64hV1dvfeGSDnWif5gTkY59hV2GRpdgy3SXG7xJnsQT+zqbncUOzPULb6sqORleVXR5KPsspojtc/rW0EbGaSiRv9BiK5rswpFcbDEwi1Nwg1+eBYO/MLyK8dDl/YD95a1tj0wOKMg8v9ZOZ8j0ggJKnMJwPcEFdW961UN7HyG4BP/c//wAExGfA4CxSbP602l1GaOdZFqJ/8XQ1HZX+y4vWkudtPuNfdiaV768ZZ2oFuAE0ci3Lo/dXK15QREK0t6pM4GzlxF+vnc75yCzkxNB4vUc64c8wumJQjbGtoYx/gIQpRXJ+RAcU9IOBUUEFDV96sWKnhs7N45RKj75XBlejacuVu4g0AU4D48tYH0GJU77YfiO2YS70UofxaQI4pP2xzyFQfuVaDBWuCEik3tdDsnOxTJE8MTNfrxsZiUEt40Ga6W/8PM/E6H4ppwY0muqeub+hgJo6EO7huK3/KcipQLYeYWBGpkgSs+GkP/4maPchHX4UnFf9QXeuM1hAWUKXQHWxRvP6kRxGVZsAsuDfZ3ovt2EM+kBb0S
+  template:
+    metadata:
+      creationTimestamp: null
+      name: slack-url
+      namespace: cr-auth
+    type: Opaque
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta1
+kind: Provider
+metadata:
+  name: slack
+  namespace: cr-auth
+spec:
+  type: slack
+  channel: comrate-actions
+  secretRef:
+    name: slack-url
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta1
+kind: Alert
+metadata:
+  generation: 2
+  name: slack-alerts
+  namespace: cr-auth
+spec:
+  providerRef:
+    name: slack
+  eventSeverity: info
+  eventSources:
+    - kind: GitRepository
+      name: '*'
+    - kind: HelmRelease
+      name: '*'
+    - kind: HelmChart
+      name: '*'

@@ -1,0 +1,15 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: lavs
+  namespace: lb-verification
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: ./charts/dev/lavs/
+      sourceRef:
+        kind: GitRepository
+        name: lavs
+        namespace: lb-verification
+      interval: 3m

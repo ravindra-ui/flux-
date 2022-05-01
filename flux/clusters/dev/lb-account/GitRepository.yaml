@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: lams
+  namespace: lb-account
+spec:
+  interval: 3m
+  ref:
+    branch: dev
+  url: https://github.com/Tecore-Labs/lb-account-service
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: lb-account
+spec:
+  encryptedData:
+    password: AgA9f8NRbirJEKZtmA4nSmmbSCkFSsyO7zVPyQjoXj3zdjXbEAE7HqR8pB4IxnuGTyAdHCerU9ykdnxUaNtgbEtWAjX9A3Jrj7IOEKyWmK4QK57Kw40V7K8dTnR+78hcWbQp3a/io1h8LuqGLidshpXbW6LglVQPjzqCtK0m7GV+JwyBxA0KZbSVFAl97cM/r9d47isIavXLHtC4npFLVG4OiyfGIdoOBa2hDJZ2RM12aue5pZRWII++rBMQuO6GvUDfeW6KmxtU70LWU6uGW/89iV2RI+jN+Z3ooRUqwCW0vvS8Ltk9SpDGhH9khHBkUA2D6ktWGWthtZnLsd7amGVv0psUUvvBR1dj5ncGv4NwzBGV5gqDK/7Y5kW7eeJQbu1gAKgB+BGyLudhOOvlPQZrBTRVCJAsmutgy4eHQ1hthadu1h4YWeouHRIBOizEZufhDIGbnYBwcmFCb0w2KZUgKSZT0I2prIw14UdzSqbUIHc1kegX4DsPEfwpWBLjC9M+/AMvuqiawEjI8PY4dy1mnzGtMfnuR2FflDfGz/R2WW48O1KzEwrMca05giVHYe3JpFP1n9g7aixpq3EqTlwik68iQLEk/6+p5+dy/rN0m7koWDsAVh8pAgL17IVhLA+zdEi1VrSAuwlzeG5ULRGaSDBWizTC6BFXTsZr5mDW6c0GjfEHMS64Qi+TrFZA/M3bCH11FnHsGUI9GE9XFlfm/x/NrAEw0aocYdVPdj8R1VY/1Di7vAu5
+    username: AgBowcBIsuVYhQ8S4LakSG8otqcsSAJjrXE0pxRkoHBv6wqEpAUG+AN/U5nIwA/IKN9MmcU7vUsMbM6zp7MmJr1nbFdti9YPnZNAskHdbL8JKjPEe+Ecn6f4qV/Kb3y/yQpSxmQphmFbMIaPC2r44/+LpZWNsq2AZPFc+eCKPfbcn0GjEOTeW4VNblAogDrIygn7PMY6e4GU2gK85cHoI7RVap/vItznq3xgF05Kg723mmsas/S6mT4JH//zM/JtP5zY6TXIrSp8yPsBeXxXFud0NOYAa9zNEiz3cIlTRFGUzSwVSnp6Ifk6/zk2DsmD0uGtBNErizi3109xf7qawWNuqfCAJaLRN7G1MTQiJ8YlUp9cD/DnCd0+1+VOIsUGvo10vaJn7XEdATziK+OkMFKf+UcK9+GeM2mXbOgUEnwWL3u6OSZsijwHTEpszFi7VSRqTDp9E74n4lQYm8CudrmafOh9c0LmwVT0jCMZVI0/Qs9yu1BdejA8qpLZ+RnwAn4k+KcTj3j3gn5oGeXSAo0AUnBMeBaBH0vgaHIK3wN0oLMHmKIaPRnU8qUDcvf/Rgw+ENvTqwW7eJn8gdwLyExF0HMHrdS/xmGxH+LcH0yFqM51/GrTm1wb6gfupfTgg8qYcLCB7B4FXR9P7O63zO2tx22koVE0/FmZrfAG2Qznkz51LGJGLX3ELL/jVyNv37/G+hB1artCQz/p/A1R2d6AJhA=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: lb-account
+    type: Opaque

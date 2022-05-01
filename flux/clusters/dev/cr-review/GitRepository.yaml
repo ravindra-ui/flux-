@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: crms
+  namespace: cr-review
+spec:
+  interval: 30s
+  ref:
+    branch: master
+  url: https://github.com/Tecore-Labs/cr-review-service
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: cr-review
+spec:
+  encryptedData:
+    password: AgBtRWOfI2qpqjsl5hXyIzUOd9G0UzdY8jomTsc8IsB+gn5JHUpn6vCVMYkZGg6TnslpyP3pO6wioA7i5I//0KlZZDJCnTMYOGG6SKJQJjHaFht+impcI78HC6LCRZ28qXzgwiC5QY2hMlDsd8gd48zhrfX05HxAS2m1xrJm31C1OCa5KI6BytGC8EA2kv06iZbm+GAJj3EBOUGQHHWWDAaMZ1Csr1XPKmiIaZXrRMDu0XAxYt2zYqL8XgmFkJvZsj/bU2L+9FvRt6D5RzL5VK4qOvrsyhgl5/DVH0BN2z4Ci7NlfenW3Buv4DqA+v7ZrUuqWQk7kDO0EcvYhxkumYmxf1SKl6VC9XLJgE8wHztmw8tGkRXvA9wDM7T5lTqo58PqcdX87/AosQ/vBsjYopNX6CfI6K0QBYdw6sDKLkjm3HhHNfTZcfEJ2vk3IT52B5T20FSJrIbkOm0QtcldiP3XYKK20YHZOXBTySFTOylIX/2Xi4uOhgBGTSZuhZl1bpj+K8Jd58pZw89TOCw89GdUBMYnkIkZFOj11yVqxw9VakM9xKt2tlZpbLyS4OL5xm3DUxQAEesQM8anwSJlm5tU4nXGhmCijZwoE9LDFEVR1TaEgf/WUxtjUM8O9Zmm/Rl/vMr+SoVDln+/zgTts6dhwNs2IGebQJ/tipNH6R7asxPNtPIWcf0DNSq5EJ+IToucEPFFbDkQsA/XmpG5EIsX2fusIb58JzWF1LqIdXpAqEfaFtuA0Os0
+    username: AgDVZ3yB5w5x042pVQxFTV3QKnU1opWJjpMlyi5xrvgV3/C51/TzEHvNuWY27IMoPPC1kDm+5lEcskljr0GNQs2hqLQ3uoaKV5B9mJIeBuF2pFQY+LywLI7s1KlqbIFJIeDFgb0P3gHVuv9knyn/ZjIYZDi+Y4qa36RXDK2qFJjsjvnO7HrSIbrzCj31GjHFVAEwvzqOOCX99+5nxl2bC8/6zQxSVTRu3uudiFJ7cTGIsiakv+RpYVZoljSimnkIulhQKPmqtL0p4KI/rKyoJYANq5BEBbiWAZCs/M1q6yWJZsdguzhZOUoNXKc+uFKHvPmXTQ/Q+OLPjjHZiDCsk4W5bvmf/7DrFixeG5mXph22jPP91eUu/rGTOsf2UJdLOiRn0o54kwbniNTTB3jcc11CdRZby+KknoonrVbEy/v0l92C5U3XtC06VKABsm1BC4X2qNRVa3c/vXLtBNI3MdQyceNzxwluwvqtdebYcN5EaCVhtRPoFk1TgxEsk1hYOFO03nhGkPPJmnWCVllF/v3+lPcH4k9wMiVOAL5L8tCvwfLcRpO/N31dk4Ic7+VGKrVxfu+27Asa21DZ8VDdlcse3rV8AqV9klHLGMImKyd2WF0zSLH+8XnDrXLl/XrURmCgQOL/hsxoWJMJ9mOmS9Q4FJCEXHnH5uT1Hk7m6UDwrMUaO8nUJn5g/Y+DKOsQ5NjWhCHmpZC/QUYGViD3h2B6pBg=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: cr-review
+    type: Opaque

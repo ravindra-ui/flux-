@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: lsms
+  namespace: lb-store
+spec:
+  interval: 3m
+  ref:
+    branch: dev
+  url: https://github.com/Tecore-Labs/lb-store-service
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: lb-store
+spec:
+  encryptedData:
+    password: AgDKzA9wKw1JfJ6oP+Ha/zGEo3p/12UWBVnJ7OTkFzpX0OpuN78aTfnza/RS7juEfiy9P5lmA+PfijhqU9XiX/1CEQfeFhfRIqr/91a1gQp/JfyTmGtuLo6UYfXIqKPMqZh/mMWa59XimAlnCaCqbdDzgOOmKAurmgnExfLEZyC/i1Po/E+Q9GRVlfEt34lMXKoRjTbpMnSJz9ko+9D+KYBh273DqH4fl+uRTH1rd9fSygXyj9kvwrr7YtLkIYrZx8eOSndjZlTcaZeBihluDfoGMUIWQh0efnnbC13AbIMBiDEBum5Kjic46sYwlmRlPfHcgLhIhwHGC/2ZWNe8HoeF/MYrUqf45VtxqI22wPSyILVnkvL3p0rP1A41merGHkQovaC4+x7eAQ7H69Oi12muRiPUJ7SRQTr0Onk9fpi+t9/94BW/x+usbg/VEHm499QEYyrrIfkPHKKKS3oRak6lgxa+OStWP8zsjGZzZq4jTfW5sDuhxdLn9XQOwFCS9DoQTBKDOEDh74usnQ8xJWrMEhox5irwdV2GzZXFy54sgm/8UgP+6KC/Z3MTwXpzmeeUlJSX3/g03ptzkTwfjunPTCE4tQtdrAqEfkLtHosNHYj5hRgeZH8/vWDTZ4CIg7wIGqoC/6xNcMjMEcIg2RfwQIEvMmzxaI+AsinLFQgfJRitntHX1m9V6Uou7ElAGnsmEJr9ped8m4ZUT3waN1evOVWUiHw772OBjnKgoEJ2BvyigVnXYHrG
+    username: AgANZ7ezlHccFKoIypS8hevcWHrXPvUg9esaRyXFJDaSjr/+pD/oymqfO39EwTI52beD3Z9xyVAflvOHtx7jIJzORhDecfblh358ZILAHVV3ZvwaKW+I5EOCV186GpsLkmspB7vpXp0NKo5p0aAyPhjJD0OZB2QTjyARPY8CoelNeWEb5yxY1L5R5ZmQ5UciRhTDhL46qPcYIf/7+8/qV1RW9e/RCHWPpYOFIEmrHexYpxBoCUOTmErps5O/UmjBlVOavYdlm6xQHcAezzfcWI9knuN5/N2UIjvPGCOdhxE6mmMdbgaES8Q1oY0NkdTuDjjUg9/6+De6KNKr33efZRPGxaiG0eViKE398z0OcUSnUeRi+vY4EjwIPN4cEpTq/9+5ub83pdUGY/97XxJXywink/SVEBF5qTYbLXU5TiE9UQgY46lmSisModlxFVDhJv8ajoF/r9TX+3wgOkZ7QYCJNX38SDTjLASJQzeJ7b9++OZt3f4YUilsDZlJGM0gcG43sL0ZBIOKFfh/3jUQUAnwaWrftgcKdnu/ov0IbwzJU9N3UZP+mbwtazGN9//Z7K/MSa+3YN8BD69dUQGnPD3OQ5uM2uV8X7vFJX9sn4yttiPU2uajNmubhWRLAUCzuBpiblD156mkaky9frZQqUmxpV9q53PvTVojrRlgqmS0suoxexB4CsE4VVapnjUrlyCAmhbz/mAnnrSZu+g8ak3bx/c=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: lb-store
+    type: Opaque

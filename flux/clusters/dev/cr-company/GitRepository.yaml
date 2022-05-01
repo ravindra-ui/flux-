@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: ccms
+  namespace: cr-company
+spec:
+  interval: 30s
+  ref:
+    branch: master
+  url: https://github.com/Tecore-Labs/cr-company-service
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: cr-company
+spec:
+  encryptedData:
+    password: AgCCdmXgGW74O2O9/NhH44y8Ozuc0BdOv9cRwM4cEIa0beGr76XT4XKSBnhOYqZXqqg5BGy0a9ZQXXnUlQnCSvnKfyevBjR1+hkYuPLfOSUcku7FUbb0ZuUy3q1puy0hwTeQrPWUNVWTc9k/O5psLwAkMckK2RThOj+LZWh1LezNQoeHeXT2UQNyFxYST2l3lLc8Qydm6+YFXhXt4DJ8+hmI/irSy2XRishpCK/bJTeYWSQ4mPnHoqpUIvmeX/KK9bGH2Ao1cUk7mG3GHG46ii9FYpSxFDfptcTPk4TQ0Mr8TP3n/AZ9pH6bZ0wNoEjbZDmcyb+YIXMV4R74GAOdL90IbbQU3CZ4BkJ3eLi4GwY6yD5PI1dcIEFFfhSSpgeefPDO3+u98CDioMXWKdcF3Hn8tMMoQZsUbNzOx1GUX3PL/+SSZN+3xfQFcFwzCjbud8XMxdZx8lYi+cWGjEmEG6/vi3D6afXIVASNhxQq6VBI+dxZ8k28o7MXpJYnXZRZhMxY8WKPTdYFJcf2FwHTm0WfkaVLVT0//+4Rzykt4awxrSMdtXUSEbl/j4ng8qiZI1NoHjM45FOO0Itatwy2ijEf45jmBseSQkpaKPThKjXeYrx+AW8DmIDgxrB/uMT7Bp8DJsiPGEyxI/haRkZ7oQwE3hFcnhljETvVxSoUa5oRAWEHBnyYVvlJcC4+4T3fKrtriboqS8dMchAgE1VlOs4d2VYMzVE6rbooKen/eHMYtTVLjNpynwmb
+    username: AgBu42kgZeYQEJtaRslgWW1RhXEGzA73rVo5Vssc3p6eDQzhXrcekslSGTVZTg4GYnVWRpaw2seMTJZzHbraSXcWPv70Kp7G6zgq76RUwxH1W22bsgkuxAnw7Ci6U9ZCT8C9IXYZumI9JQPbuCG9HtOAxD2MkYjOfZeGd5VnvjSfjgoyuCaPwKUgC8CAwMHqVM092MbA7AT2yy3YIoWRzADfqIJZnoSW1WcIFJGlotCXJy4ZMd6I9aiHmMoNhk1HvX+pM1egZ8wDaV0Gzk2DccXgp5mvj9rG3vj891BahghbIX8EtPrz6L7Afrk5WQvguqkNn9fxQfyMGyp7r4DUyBZGmE4w50DPfNuyMacIhVOww5QeMLytrCvjLn1xatemRUWGVJ+DgMOohndY3c0/tHGQbIf6vt7qw5BLBI1vQ33vJWKBWk7U9TiczVa5Kgb8FatAuGcT2mfAfTEKnmCtvzX7HdhOgaBxuLEYGIj2VXq+aoRFvECn28lHQVZoBB75vmHTFduiYtHGSGKOwrSLiLQEJ6t2z5T43KojLvAF/RKIBFa4RGjBiBiJC8C5E4KlDXlSRcYnvC+XneX6UrJOkDaLyBMgqEYpkVV9hnJP6aIgjEIcOgBqB4Kxck2sMJFz8uRE11mzN9RxXODVS91UVjYZr6cBIZE6Y/ub64hwRAwZXVLdV7iZT165T62XWbJX7dh3iWyd4tW+JkKCgyu2vkyqeYk=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: cr-company
+    type: Opaque

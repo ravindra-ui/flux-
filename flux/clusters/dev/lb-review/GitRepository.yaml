@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: lrms
+  namespace: lb-review
+spec:
+  interval: 1m
+  ref:
+    branch: dev
+  url: https://github.com/Tecore-Labs/lb-review-service
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: lb-review
+spec:
+  encryptedData:
+    password: AgDPsnR9sim64OO9lQ/qssI9Bb0FEAuP77ImEGjhsW7uJzKkPq5oheAenZdSjKMaQ91DkgNGiw8Lzp1D9qJmmcyKdNy3UaXqKbI7wWqaO9zFaRs3MLzBIQSWcLV0JzP2jPjVarbURHTjgld7CqF8fLkXC/KvWRUTxaE2/3IEVvBZun5cAUvcAE+JKSLLXO2RMqFM5Cy4FKkepIwvwx+N5ZtGTOCdr0MmMMLDS8CrtQ7swfNFD5PDpwnGUlkp+gplLox/mabGgHlPWUcz8RembPJ8XxJLVn692u8O21WJTtDU4jsR/0sONLmFHfL1TmWzlphoWBbvGt7Lus/xLh91GVyZOSyfPNtoj2jvfbmhX6VlQh/gjQzaPd7HOWulnOEsD0qK1xD27bRhmsc9xiYZKf+Ai6ts+Zima4iwA1VEyHep3TKmySGXjVX2ygLzBFfcHRcnHuBxSCeCIBs1MKxbB4JCOjN3tyJDSI0ktBsdSg+bTtxnWpNePeF6jRHSz2K/7U6wjhjiL/dPxBj8JBSGgR1W1ECsKeUg8MVMsY2iIRXsCE7F23QZNm/xyPW1X+nWaod/7Md9FTwhAEaTjFysBdYSVWmngAMvLyJ4ePZW4dKsQfq6k8lFBwVpC8T6trNxlHQiJWyYHxJhUmXSFedXFR1ih8DqxyrWlXYE5IjbgIozMFTVMUSzbBRpf2Fmhjx5E/7PpGgGp/h+Rgph12a5Knt1s0Dukery3X8RfL8k9U2pMPxinR1PeNOB
+    username: AgCLnMLIJbI+I/osrLZQmC3E2CV2uOEajhu4rinj4Nuj1CZPc/ucM94cjYnzk4DUIEsyGDiIOK0IP+sRAlHg6bNOApepD90qfKJy8Y2GxLXQoam/Bn2JBZBAvq1Sh+LFLcuukrLZ+4q6G+wYDj3tUIe+KizyG3j3oU2zxfb20WAR/KxFw/Mrc8n0Gw1yURjuuTWjEvtQ7AhHy2qeWzWxcnPStenzh/8tX68SuIwv4RV8UOUZ/qgXF0AIp9y6lEmd6txrsn3QXBXfpntsJQFuN8OBRI5FQ/JmfqkjeUnTX2M0txWq3lJ7F8VImapE1KFlqIr6aOGH90SPRmt3d1bg8hOntxmdAtdOmqj7VRFbYaT+ADev6xZa1zwN/hcrnwnbMlfXF+9k2I5CjYmxgYSzl5G9irDUkfuMI2gXu7HMZlwc/Eow3R9Ry1eao6OkqZE2ergk4lzeDHQ+oLTEgM5tueE+EQsbJMhlf+d2g67LBE/+MBc4IhumrH8Vw4J41+udRjNT6rjND90+qKcSMMH/1SZrCjSmSZAQrbTZLHG9d/1j9B1Vf3WyO+fng71n5e1omlNQVOdUaBs66z6LacCwl/gHZ7cnw6BUg3sZO8OZ1EGRppG1xVXzOFW09x0U7pfWAKJtwGcOR3UeaHWFrEvPQxxb5tBrJ7eZm+WZ0tt5+WNY+Nm/HG6RvssW94MX5ysBbmqhxtdCieNK7NMYOmXmfIdD7xk=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: lb-review
+    type: Opaque

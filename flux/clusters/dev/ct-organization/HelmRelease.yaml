@@ -1,0 +1,15 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: ctos
+  namespace: ct-organization
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: ./charts/dev/ctos/
+      sourceRef:
+        kind: GitRepository
+        name: ctos
+        namespace: ct-organization
+      interval: 3m

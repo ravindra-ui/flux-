@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: lhps
+  namespace: lb-settlement
+spec:
+  interval: 3m
+  ref:
+    branch: dev
+  url: https://github.com/Tecore-Labs/lb-settlement-service
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: lb-settlement
+spec:
+  encryptedData:
+    password: AgATe41Db3j9OKV8gjqtr24ipd0An59sLI0gKcpXiJ99i+TIkddkfSud9wxaQF5saI19MMl3ScrlvEVsxlhc30lwzLDSeHBEObsK2ZwFkUWdNtpRXfqzZFfGnxPcaPFWtCkwy2hUQEB5wMrplTMeO66pyMFGdHMjUXf86aMhjWGrYoSW+FrVrRQFRdrNvNMFdT+LWeTEaTphRLz/tMPhBA6C4iO9p0VeD3G8TIborHJjmRLfAxzeHPraRTO1tZXybAZ5DLUsf/7fsf/IDrD4pSA8DZ/ZZq3OhV4u44P18Rsi1cUHidGT/G3NjuHyQvPnCKPVfAPYawwEKjD2hlVDvQ7pITqeg5RxDQ4dvBwmq/UD+1f8AlRh2Z41A74x+dbOrU5rwVNptM2bU3RuzLrxlWdRYMew2+p94x8U/4aVRSGbd1aJs9OJzUTUxaHJJ2luRHdyZUgON7o99UOs9W0ej4ScBVVMD97/qk8LKV45wipf/7zxC+jXXHnM72DLoJ6t9N3kZqM49rtYenmMr7feNdyAt6yPdKjOUoNwO6gRNTotK9IQNCatP3OO05yXQ5rGFDQD/3ixr+YPzmypdBqloWj/RDvMslYTYoh4hLU+ZiN5pWNScaHBbu2FztIDu86iDvz1WwXLqlwXd3+s8GmQtKUvQsNdDrBm7G8nbxsXmq6ruhQ6l+olv1n9VbMo3Nmp1dxSht3s5wO6fDgriLUq8vn4rojk/GLP7HR+deA+EakxJcTmsTNsv35V
+    username: AgCRwvDx86ZxnkGUllPLO/SxDk6xD2LB38vj9SISHQH+lrVk/rtRpl/7acYncBHKkh95B55NQsh06MawJOt5WqOe2rOjT+SRTppYL8gEpSNCx/yIupyj0XJQJF+C4was7w3c6g4IMChTcNp+ri7RlVmwJ2Flx6rgpxhuTMpz0A503OBOORXqdDfZV13e8gxr++Uww2PKGvk82uXccoecBreNp9X24PGKwyE0W9LP/Wa+sfshqW73838PrhfiRPPxzdsv3vLYByupfV5vumb/yUmWm6UIShA8qDvFEvN2dVXu/tu3d7qCLHAvV7GfvYIoP6B9ncFto8LV7Ih6DvKEVq53QL/VAYEFiCI/wGdJhzgAQEaxdkutckcuIlHmAd3sh2YtnF60YVYVT4UVEz909ZZahGTUvb/4pLfBqieotv09PjpXxBcRfy/EUnyMITB5y+dBBpH56CST4qBjqrucNczvd/SeKMaqX+DcoCoOSJivF8KOQMRfoA/YN+Zj4hjjOLxuxJQ8qbnKzzVF+m9WEwetWFrlWHhWPaSM2vUa5FDdq/ux90D2URdpsM8PssMSRE9OyX+8UUXg5Ed8Y27w2nfo06k10AGk47lAvKYChnlodWTNLnZiir4h7X5c81VeJqn9UUeW4UIAe9XLDduETpgLF2cKKQktttcz04XKPsW+gK7cbWam5uxUmmeDTFKWqGLcPooOYbbxViu8bjnXAQhKjWY=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: lb-settlement
+    type: Opaque

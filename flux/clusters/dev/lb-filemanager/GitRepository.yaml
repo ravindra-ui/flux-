@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: lfms
+  namespace: lb-filemanager
+spec:
+  interval: 3m
+  ref:
+    branch: dev
+  url: https://github.com/Tecore-Labs/lb-file-service
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: lb-filemanager
+spec:
+  encryptedData:
+    password: AgDLuNcwA4Beq2dPqhL7O/+GYEdJawy/u3wwWnIxBTJmD4vtHzfgEo4PfpRdNHjcktY2396uiNUAsJFfZn2GSsj33KJv9igb9LQXjwTtJ1G7pE9pfSjRnBB8vRaVx0TveiyzRNIFntJNgPMU31K5D90GT73NVUNO0MTEvMlT9PMsNY8IxAPEH7uQ6ywEM6QRNRAR7Pwbc+YPf4RhZV8PavnbbOb6rCe6Gq8ne0GPISllqxiYlClqLcSPteVHJw2/Z8gbcyoZEc76H0gKmnWnQYqp0qp7NyTokA3135nEvhv7Z+4L3SbsFtIlibVUL+3erxAhNDKlXQ77u5WBuVH0zySFGQ4sHm3P3S7lr3Bpd+QGbibXAdqfGydLRr6SCzOAgu6mYibMptHW9Xf0bgrydyOs1HFGiAWl1AtFsCzfMbGK8aMXBRR8MndIWklFherV7S6CFAq+Cw2V9vLIDaUff/ugkKVDnpU28fL1wwhKuYpCh8a3axW94HGcloPHJDkf/fD+S6Y0a0hhXFBzK5AEB+AgGXYSKaF9M4TlmbaYudmAMMnBUpSedHF5OEyvRAWRWFyv0QGqWI8F3Zu6bv0Yf0TMpDiO+3qnFoRD3XpqcmP2Ir7fBl3xjCXUW0WdvOMobbJ9ep04VRQoP6Dd97RsrspljznfxhVPGh6DH9Y6bG59+J8l+EngvnNxa5n8lAx3uaKMGVk3uTN2R0ECchjIPQTG0suCOo35nod844SOlEXQlsOsye/mqDmt
+    username: AgDaN00RE2F8b6MLsbb61p7PyZlvbEDGtN0miaPI/6+4vzOIW91xSUUNhOlL39p09Z4XoCmdScaf79m9MC2A0o+OFKlX6h8kmktSpb8inL/PEJZu7CQds0QSydubFLE3mP3Vs5S29+RC0qbDmUN8aYIQ/CLaaEnrZQcnsF37tScwwmJa5P/pA1N6ZhZljfnjUJ/jVEg+2Wdd0EY6J/P8WJGOY7XinTzhGW4LsvCD+/wUk9UiBmV8k8wlsr2e3bR9DSYvMBVI33+ETs02UvyRMNSkzNKhuy8+APDPR/Lb5J3AQ8C1dDUB0HNO7ygXTz3MJieK7apYCfEMFiUCDmNWCj8MsgklLtQ/0+79gfo5YM0C3FpCg0z9TK3GetCKOoYqsDZpKy4X07EFZpICksSAAc4wLgM7x4Ye20iPJVUi9yZ0Jv8zTpInb1UjOYziWmSkf55COSdKZtqGnXdCN347n+slFJqW0fMV81c6bQm8teX1G5NaQh6wf4/3TpHYn29PyEsaKltX1XOvFG+/XJ3l1tFtjO/OZuekH90EaZrXsJGJocBLQE7T5zT4ikUk+m5a8BSsmOCI3v8ywSgubUIyTHhpkZvn8QhD/I07TBBuXJPjg1rT47Z5N2R5ievxA3/MQWvIktH6B/43EhJ19xh3owWFiMeSrvd3a68PhIZx7e0gmo5ayLNEgNbawcM/P+O+9IuMiLGVqNjOuE2qRN8AQ7KaAI4=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: lb-filemanager
+    type: Opaque

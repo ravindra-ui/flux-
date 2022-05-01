@@ -1,0 +1,22 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: ctos
+  namespace: ct-organization
+spec:
+  interval: 30s
+  ref:
+    branch: dev
+  url: https://github.com/Tecore-Labs/ct-organization
+  secretRef:
+    name: https-credentials
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: https-credentials
+  namespace: ct-organization
+type: Opaque
+data:
+  username: b3BzQHRlY29yZWxhYnMuY29t
+  password: Z2hwX3VveDFrUVdyUVpBY0RLYllFaWl0dXdvNkVja004MDBBQngyZA==

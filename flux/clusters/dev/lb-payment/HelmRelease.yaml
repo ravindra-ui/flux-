@@ -1,0 +1,15 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: lpms
+  namespace: lb-payment
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: ./charts/dev/lpms/
+      sourceRef:
+        kind: GitRepository
+        name: lpms
+        namespace: lb-payment
+      interval: 3m

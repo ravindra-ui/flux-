@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: lavs
+  namespace: lb-verification
+spec:
+  interval: 3m
+  ref:
+    branch: dev
+  url: https://github.com/Tecore-Labs/lb-notification-service
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: lb-verification
+spec:
+  encryptedData:
+    password: AgDLb/C+oNvckn1cnDXEGvL75b5f/KhPsT0gJoyzQMcyb5yAj8YRwi8CzB4h1mYTkLIZBEnsHmUkZLR/UtHw8ZrH+xKovxqS8zbPaVaEmKSGlf/bjlN0UMcMc5e8XktXkqGfhDbRA/hGSLgL9cHWCSrXGzhmK9C9hEyxbSseLdU3zwxtuO1s5Y50nlWPand1Lvynp8TCw+FlJzFmpsKrO1rRxT0XgMrkW+LuGInqpLu7NYJaakeBZw6d/N985v9AkI3CE68Y0mFH2Rs6eqC+ChcPwL2lSGE6XWRR2z2lw09k+GhzjYJFjQB1LGNgEaxoL9YQeBhO6JW9bxeaA6TAIFsUro5ywWZ8+JgJwxo8pxFIuMG0Kg4zD86hKNr8j043xCnWD+Bd/kNaZMDxmlmGD2+9zLtGbmiXb+WcMsobgT37GH8hdmWxOSH1m+QpdnQ3qdTsiFk8qPipjdzmHVxb8wrhe6kjMIyRHWh9nkakMID9YkZrjyoQlCuvNLPexl9Toq9F9HTWp8UmKRWHREyMI2+iSggo5b8jC7n2DxWm19SuWDx5Wz9w5TyBihDE+tCjvR2BUV7ql26ROdQsjjamar+BEaJ1uqxSXoHvdyPpOlqVx0iQUeBba3qQ2D1jQ3MnmhYltmgmT213IwvUk1iZHHqMF1Urf7ogocxLLKxyyf7mctOKFfYoT8cMkm2OyAY/XOSFlfqrq4sMWFYjQwwYW21PE5jyvU6NELLk6yqrvfk1jveZIBMprNM5
+    username: AgDWtdP1flqtmy22Zn9zjvUaERxUo65Gw3Cvk8+RIpjzM3ypPPimZemRWAqePhmWspd3QtkdQNR2B4jdyoTXGxLa6wKjpVU61biZc1jCd1zqN7XekdHmJrsdwQcX3ivo96Reu9SbgT6g4vDc+YDrmo2Ogxuk0PLqROuuewH5MdJMYlSbkWUFdp+yeYVHkvunGRpo/qcap93twAndRUHInQn8VPwFyJYghSZ4Yxn1uGndA74+OP+8/oxtf8NIqSx+pyX1kl5sShQXSQxQ6kiqg8zqp6IG67LBG+qncCZ7VKFrjpbpHFNp/etBHZf/XXJTkd9RikyM69PgS9SAboV+kGqE3/wWss0PIKSupqdB8ZExieY3EJ3pJI2HBf743cXBJhspnbVVBmmene7LQvpIdjgOaVP9rQReZ+Fue9J7F/jq9W/QP6HIHuWvAISXlyLCUyRbNfb1nN9tlcuZTKZiPq/7vmTD9czyx1wJDnRTKgYt77GQN+3UJufBqj5lr5AcV6kmsyu+M5v6jmNOBw15VODVV0Px0YflZtTcvB6d+Do8mK6tS8sXDtnEOEZBXeiMNcp8iQdfFXznJswNcJfxRObZL3/HhO6nH6MukGlUxGCEGrKibkrh808CWEgm7mz1vd2caOkSCnL1t2yixRofTnwLqOHChWIqyKtZslV7STcinxeEjDuiv3j1wNIrckGNbWdXxf9pZtjtJ8knBq9htO+BgDQ=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: lb-verification
+    type: Opaque

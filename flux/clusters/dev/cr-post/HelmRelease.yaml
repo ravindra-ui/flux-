@@ -1,0 +1,15 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: cpms
+  namespace: cr-post
+spec:
+  interval: 3m
+  chart:
+    spec:
+      chart: ./devops/gcp/charts
+      sourceRef:
+        kind: GitRepository
+        name: cpms
+        namespace: cr-post
+      interval: 1m

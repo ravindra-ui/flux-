@@ -1,0 +1,44 @@
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: slack-url
+  namespace: lb-booking
+spec:
+  encryptedData:
+    address: AgAEdgePCQGqX2EjL0zuyhReehDFAIryMMmX3jIZNMyvy44G17XlXwWbGqXsxBW/5QOVpdhMIFMf/9RRTvx8I3c9OzWvANPzl3mj4Ftp3lnqiO8isHlU4DCSpQtDOFvukBjBFgX0Py6I+m74iUUfq12/IQ24IzSVZYflr7S2fkDqXV8n1Bl36wGZojrhptNdCB9+7/X2XIXnWw4Nbw3B3lAnO2rL7/eDYsQQNV1n1W0A3surMIQHLW38dIcqk/BBGfvOTyR+EBxIje0GBsz8kvs4tL1YfkbG4y43BWjx8euZb0njHLMfqVAupC4iBeeS66oUpEfEyWwwOsoeX1vPYMAcp9D34ObbNn4IyxvcN38oUoCcH5WY1AEx8oyWNYhfGFrXV2Y+uWM2RgzhTnLtwrrxFpldJjrzFtJxiM329Myqz+DRLvhMFNMgKE1zQwN/8WUQ/b/X3dZPEOIFcLPiQowekUG2SabDObOWbt12wVCTG1QsPP8pUjuEmpKaoJVhu8BpPvsIxNsunbyF8/HJnvzeVVEyY9B1RS1+BLs31C/7Gz6nZ9TbU3sS/KwcwOYdxJBpV5kIEC96WeeHE6w0X2jctLNlcsRdnPWSgQVjVOwVQfq9H961zu/1511m9mt03IKJLGzyxxPR6zrFX27NOL1fnNEPZxqxcKKabsjABuaTGIic8Sws7ndTUhc6Lok8iql26g0d2I95BaWwbxTA4/FIzDspkBU4+1OsJkyFI3czXoideqapy3N/mH6YjBTVmWMnjFPngdHzF8yNcOYIvw40e+7djOPAl2WLvkuxY+0y
+  template:
+    metadata:
+      creationTimestamp: null
+      name: slack-url
+      namespace: lb-booking
+    type: Opaque
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta1
+kind: Provider
+metadata:
+  name: slack
+  namespace: lb-booking
+spec:
+  type: slack
+  channel: lugbee-actions
+  secretRef:
+    name: slack-url
+---
+apiVersion: notification.toolkit.fluxcd.io/v1beta1
+kind: Alert
+metadata:
+  generation: 2
+  name: slack-alerts
+  namespace: lb-booking
+spec:
+  providerRef:
+    name: slack
+  eventSeverity: info
+  eventSources:
+    - kind: GitRepository
+      name: '*'
+    - kind: HelmRelease
+      name: '*'
+    - kind: HelmChart
+      name: '*'

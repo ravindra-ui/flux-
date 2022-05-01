@@ -1,0 +1,15 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: crms
+  namespace: cr-review
+spec:
+  interval: 3m
+  chart:
+    spec:
+      chart: ./devops/gcp/charts
+      sourceRef:
+        kind: GitRepository
+        name: crms
+        namespace: cr-review
+      interval: 1m

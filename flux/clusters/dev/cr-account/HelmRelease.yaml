@@ -1,0 +1,15 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: cams
+  namespace: cr-account
+spec:
+  interval: 3m
+  chart:
+    spec:
+      chart: ./devops/gcp/charts
+      sourceRef:
+        kind: GitRepository
+        name: cams
+        namespace: cr-account
+      interval: 1m

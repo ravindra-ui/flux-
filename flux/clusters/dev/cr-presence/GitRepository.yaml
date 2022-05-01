@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: cpss
+  namespace: cr-presence
+spec:
+  interval: 30s
+  ref:
+    branch: master
+  url: https://github.com/Tecore-Labs/cr-presence-service
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: cr-presence
+spec:
+  encryptedData:
+    password: AgAOU0D1W9DB35JrI+tcMJ8rLRGa3iBcuCQG7b+k3LurA+h+HU0TuQNl30QIC98QEH+cSyY/4RRjXPFDlcyUJDQjDznQO+Bx0XEtzGtGDQTsn3CiExyz8ugxRtiiede+KuX+VpAAG/MdWtQaa2euNfX7DbEPY1Otvk8idPxFwE5gQeFowzWquzgqOTARAthTPDFfQxyq0k815tipUyJxjZNg6mJCBr1lxLLGofZRBSIzA/DjF8j+ljFeeq6HI24yNgJMFu8S/IzyVvnXWYt3UeeqAj9GmyGRNMOeI+FEhH72mhgrtmv1X32m8FUylCGfLgyxqHQIgBCiKpFR9to2Sg2F8/T7dgUFn+QiZlG+1wO1aIf9wgCmzzG5PQk4C0tmkAwd376bWd2rZtPVjeUXxE4SZPBt24ljupYnW6FUdlh10u5gvJsH1DyNhHls57Wr8410wQKne6lv8sAkItTbX7x5EYjeKWd4tFLpEJ+gE7o8ipWMe/yrvU6uNCO0KDWBSHHO8zXMwbpShBlWIMl2/jNoy8K/y5HVnT43zmgtFkHX30YA0D9gzvse4MXZfLZZ/fP1AfTYoK5uEdyAtrqiy4iiLCg38UwPCE3MIEYM4pKKb5GKsDZGRC/7zXrmzPfaXq2C+h4wmu94pboyjqoEnW8dswt4FU/DZByCnZGwAlJ6DSGpPaNhKcaMboKpLGj2bxRT2kekSK3Y7dwH1CCdTiC6IL0Ofl87p91YqEwq+N4RNEww2d4riqh3
+    username: AgCqMjJBumYRYgpwBUWSFriEkyE+600Dc5WxeqvssN35Am1VgvbeiSQavwcKgxJOdHGiD0g8lIpAjOR8e36OZBpawfxmnKIAlOsHdK+H2EO15mFjyE6sEuN3v04PnGs+GVcKDxvBvi+uzen+O3mQwU2EeYnMch5O8hb8r3N2YJjOXZyV6LFxdSX6u6rdlgqEpHhp62nhJpPfJSXha0h++GI4J6Sr5MMFS5T21ZhadQxLRv3CM4zJAL/4XFMOhOYVjGD2eiupvcDZFJzxgv/PhHHdDWOB2z0rPCZRYfRHypXUdxODcUhzwFyxFNO8ly7s8TfKQ2XrYOAQ6sXBxAd/8+huUE45pm2YpE+7rr3+/t+7xe5vwPzOYhRhbFvsssE2gh68iyOmFUAacsJS5Pi1H+SoZZpyeSYYQDSg3ZGam1HAk8TfNQ4olVL0HwwgsOAf6UAYOJHC0jow6AMSunCo1UpioVzZ8pLei7IZga68zKUIDP/9lFlYNf31CirE9HAQdVTVoNyEW6ASc9tTpEb9riptVrXtDl0xkpiZ4CXmQyq/60qpfXQELPyPSW0N+oIiVddpV2cjvn+Pca4cQD2BQUNMUDqDpCffiUc5+ArjvfoCEOJBBGJCSPy/7RVDjF6KYKftD4eFFUB1fnwWTLmnDTZmwCxdRiQ2rPSjolitx//KptW+tZhtZwoHqQuCEq0KNY8YytFP5av6T2G648dDET44etE=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: cr-presence
+    type: Opaque

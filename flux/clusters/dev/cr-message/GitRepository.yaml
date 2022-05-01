@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: cmss
+  namespace: cr-message
+spec:
+  interval: 30s
+  ref:
+    branch: master
+  url: https://github.com/Tecore-Labs/cr-message-service
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: cr-message
+spec:
+  encryptedData:
+    password: AgCkom8dtVe1to/MzztojxyGEDPuzqaOmA7pou6iiPtHqXktcLe2l3QtUuSQtVPrCJTI3t/FvNCWTcqdcDH59I/OXYe/C82ubZ+SZoYjbacA25P5MNr1dUTufdD8KiJe7KBm9VfRcDuqFI7M5+FHVLELogSjz03IBDeaNXKIBo4Xbrbks1y1PqRcS9+vGYTKJgAdSEeCv4UG+3tsMHqpVys1LM1Xg5cqbP+xLx0PRE/kJwSRf8eMKhb6N/6Dv7RREIsi50ae0RQb3p4oaYradMAva7enwUDmdaw86EXE/8LyxlLigmgsCaOoggKeqmozSE7MsQhQiZnD4rQqWcGVG8GUWNkA+AceSSJjVQiuuVwL0+mHcfcRvYl2AEwxRQKFEFEhuWg+B2Y49MQ2Y3rHgEguaV71bbgjcRdnINjCwAdYhA0+WJI6h+BRFjcLECkN8EJGizJ2lNXqQVgq0n8H3pDmwqzCnMjZVU4Ik/hwVFdrdrWakqwoJhLqnBiYZNyzaprApgczW4Ru3zsD/zbJPARZLfOnIrIg5zSO3kW+N68uNDKoyLumpvKHutxdZzWoxicJGE44enoF2MCpo7oS0Iurp8WDOUU1s4KUQ7eypUkX8vjLvzes1UiYqxDex8TJGte230QyWXIuH7DWpVCUJZO7K5cGNlo3bCGQwmHSnO2Mh02m+k2bOh7JYt0RA5cHPQDx+aHfDhKO5OTyJ6cveSFTFgb5LtFgmha/55kLJSQ79gYtbVfMbn/5
+    username: AgBsEpSxzbzO2OOOpye98tnVwQWgEnj2PNz0JCvtFlGGenDSaZUkVCn0+KVGvtiOhMfl4peCGUJLzOalwPb2HydV6bNTQcVo0qy/K2LO0SoEeYvrnwynjMQB0F6OWWDw2ohSX+/SIkEDIhIk89UO0vMoAZDglJK0uLLjJxL6Jf8eWGzaHfOzftt1QHN3SIzr5VWgmCy6NiSMXp0zR2T8OwvQwLMEI+qe0lQSH/GX3zyN3xR/CpjFnDfL9509kCez5MWcifyQEToX5DVKP+/skd/Cz9WxgZKYHCTlBonzle0zoxv/aw2wJIh1GyFjcziNlO3ks5eZY1hB772UgHnIdaa9a0hdS8HOEsmp+LujA1fHAeOd82/CQJEwAByIy5IYHSA3/7FTclHv3h9iJPTo9k4o9DIzgeY2C0r22hUos0qeVrBugTt0R/i6fywDV4a9hh8Ja9ySxOLDc881yccMti4/BYsdiuBs93Gk/kD5ruZnLVILURmpWQxijis02hMbgfOWj/PskBPnw10xZP4s77425DuUwqI5Dji9LyxOmK2OnnRr9nbr7aIl5VegZUGYAUXqRaYm0gpFNUSw3YeFv3xA4hv7me4n08WOzUa9iNUg7lWKN7Bm8hOQM7oELRUFdEA6aHnEIChR8jRQ+/UqN26HUciNLTLZjx4FNE1VnCWZnoJ0YdzO1c7K5mu5UYSvKcxKhU80t7bTlsLbJ6hi+MgwV+g=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: cr-message
+    type: Opaque

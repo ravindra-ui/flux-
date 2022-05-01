@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: web
+  namespace: lb-web
+spec:
+  interval: 3m
+  ref:
+    branch: dev
+  url: https://github.com/Tecore-Labs/lb-web
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: lb-web
+spec:
+  encryptedData:
+    password: AgBPH6EO1hX3pf/9Bg4CqwK3me1eAPfweV7+jhrCbktc5NJ7ibs6esfKJ1ECR/m1EGlqwb6vN2n+Vq6vY0onoK+L0A2vB6+7vCLi1B0pLCnngr5YrP2szhzMQPrsSuZcPU/8ExYHpULDZLL8+v+BlP99YrXA1bvBbHHQB0Yh3mqoXfj/01UP4EaPAMxY0GElXDSLeCq6wj52UjzK4IheiqEYlkKYyYQCuu/7uUNj/OpZo2Y+Lg0UB7MJBk5a/czmdbWAcqIQywxfivKdO716kfSaadvuVWSLN0LpDLFAco0taOAa7tOhPakuNpOk20CKgBphXy9I8tgRJzWxcHoabNwIgBAQKr7OP/pGqJXYT1pxUJOABdztgYMTcVdjTPOstSoBLXzoZqcycKqbEzg4TqZzaW0np7YXMXUZIAYLFDSvEK1I2NKWDe4W3+T9x1VDEG22TtoGV1+d/RJnhVala5AfVf7wRYgxhua9hYoOwOM/9vMytcmUfpvZoy89mX3s+nEJV2NQMx2lELDB3SgX1nuIo3rhajvhkGXcUPfocGcKNSNxxBOZna89wy1xvyqbILe6Qy07mKDVmQ0hDdcrS3HIaM7z3r5IHbhqVlAT/rZ8yNi+nMwHW34izYWLWwncAQ0mB//jXxd6e3C82bnf1TcWE1AtIMkULT8eyXLzXQ/xqMHDdQxY25pzeMwRVgSVP/m3i/G1xO43P+mYA9MrOWug4J7XeUfI9CE29E6ut71QIQqR8fnQw20c
+    username: AgBRCYCC1h/o1x2bRB/l1HTiMyCTkOumaljiwNEP8C0JeBLYU70CN/wKg5hPWknxEbq984n04MczekmHNr/sbuZh8aUX4MrHhmNuLEqDYASagYwrODexQ5ye4X9qH/SndiJz166sHCrGsMNFqoV8g6/epaqRO+8ZHGnYR8Ue6gXmwxy64HleKI0cP/WhbGpgIhSa5W3lbz2MS0xUZk8mnHRcv4wFXB2K3YUBIRyz1vk1Sq0wSobO2P1+uDEk7h/TR4mGbLN1mHCRcgNWyk9v3xHUdZIbhLaGmePaKQAPvJLZKCmCq3cVJeisvhKUkOd7aj+Gdq6uJUq2eXPDw48EXHFKUjuNdI/sqgVG31PZWRUe2GoLUNy/6c1DS1pL316iNDjAeyWxf29o47r2wXGfnEW4ZiyLOYOkQaGYg7/tByTKB5ES5vnBu9rRFA0Slg0ogHK+gyraXyu508pHUJC+Gqo2qU2YLMLKFGtKwMKaI1afI8Lmd8yz7aVce+HjhOxVoxeXGNHxPu21ywcH6EZN9mnIrNyLUECPp7vq2Z8R6WAGG/jDyf82/NBv7eF4wQX3+9WGIjZurr7rbpEg8OaHi70dVzW9m872hLO/fOMRwrdQ/mUH0qmsXQAGaJmF8AFfu46iaquaA8xa9nREdxwtzrDUbXpKkyvQUuiQZLnNCdA0eKYl7jbu26GP4ZHjGKOg70WQPS8GqvtJhIk+KCeCPf2cIkw=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: lb-web
+    type: Opaque

@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: cnms
+  namespace: cr-notification
+spec:
+  interval: 30s
+  ref:
+    branch: master
+  url: https://github.com/Tecore-Labs/cr-notification-service
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: cr-notification
+spec:
+  encryptedData:
+    password: AgDaZmXpXRgCcZ+37OnwnnMFazegDhw6liQYUonrLBIeNwEpLfXRTgMbaSYPjJgqCtfHr1GoA+xQP+Ks2FI7yVaYQQfvr9q6dCYj1RA83wdtTISlg46iyaGS57rhtVPuVCwS44jxsxCYFYfPwgIXhLh+UPBOdmENGxCuZnSs/NYXWKptluD3quNDVDGRsnbkFw/QPkeGMV9jZ983J+5emOKVFaTrndk5CQf37Wp2cuAdQlS3E/5kDGzfD4ZnfKctuYiLWO2iTbWyMoDNAtDtXKMrx/HSm3PMBkWmNbXF5vUP7a+KEhN9ai2z+kD7VGSJu8ZJK1ustqy5tsEULmbY8Ny4ancTNY/dCsYlKObRZOjHpKAoA1v685uJbVJ9Q2OmfJZPCcYPGULvV+ddPrliIklVg8tkNHCaiHAgFOQBoIoqkll4is97//V170hKTiawo+jgV23mCD9wi+6z5rp2d85L5akfMc/Z7xLHFSkhEs539hi1AenP74GSAreoSP8ZGBuS1IQwmjDLD26B2cgKzur05hafHndvU+OTGqzy94fVBam9bm1xhfpTQ6x9CVfaoFuzVAZP+4NgBoEDtgLxQJXOTVccwRPwykJjnhkFq8b/yV/1AUxDY8jvetv8lQ1gcw+YwUpRSLI4kOBXeOTIUcApFdyS+fQaqRPg51p04rY4oaPiV+Ol/klLzR3J+DPnXuAvSUytc1iT1fSWS+m/8K6Q8PO4XDroSMDhaRxgeT/n7vswwzsDFtvG
+    username: AgAe80DsUwWHxBNmcVqF9RRwocn36Up33DBusg4fSZ5jqH1TkcE5fpAFQUWPenfOgujeIhfAQGviNlE6PvR5Mxr0HCl16bNJvrwmFIz4Gd/5fTbWnPTM9RPlk97kIEposiNFvw2gByHY6W8VqElhoEPduQ7FhZ8NHG6VvYw9w8jtNWLFLyJJ9gPbK8CnY3Rmv6MA+fA0JH3B7zxn/Li38dXkNsRnmIGBaG/cEV8H8HL2LzW6g+8ov/H+zl7dcTofEJx50+t/ycDS+Qh7++2/nW5Gx0u73N8tT7VfOnxzg3U4vdhQPllEDoxobkSLAzP1Qp6b7oJpdO8oVeyKqJgOLj4dn8o1fY4wBDc4jbPT4DSQFrTpqMBA7glSwNmIG5J97qYd8Yg0FquuA+0ipD79obP8vFWM60LAINQpbbPLePEFMda34vLE7NpjOlBBGwT/i0/AWwCDflZv2T3ftfoxzgIjMmsfRs4Q2yN4mGPlVDGBYJO/CbImifTvhgl8FDVsDHhnC9NZQ05qdQqLvfo2yByyhiMcInqXI6g38QpTKeWKHbVs5A54gQ9gOmeiyy9L9LY5xMgLAaVVbUWbH6v9FIkZQOihLN18EImAVKpBDU7DCRIjcLLVFRty1ev/eUHP42qnVZFrOmWGnlgbUTAzB1vIBVefd/1e7GvynUuMbaHO84Axn6/9tuifpiCwfsRGhPn2VlKfHlYEBJyrH9lPeVN5er8=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: cr-notification
+    type: Opaque

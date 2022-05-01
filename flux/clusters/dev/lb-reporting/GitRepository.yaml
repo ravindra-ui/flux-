@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: lbrs
+  namespace: lb-reporting
+spec:
+  interval: 3m
+  ref:
+    branch: dev
+  url: https://github.com/Tecore-Labs/lb-reporting-service
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: lb-reporting
+spec:
+  encryptedData:
+    password: AgA4Jn/PNGLByo6D64G8SgI62rgz9Dt8UWLeDHPsipkcgwdx96ZM9afnOjBfnEvCMiuaeL/DeXQQunYiRA2xJxj752NDaEowLO6fAnRl1Q3NVgNK7NlRf27LhD2AytVcnMpcivA1KoJBoP/I/R+YW8Q1b0FEnirfj87OciBGgYXjMHHN3TGZ5E3deElkOS7d3gkiNTJluw2fAe0sznXCsOilt86/+fJsZavt6867YhXAcJk8RVgTrZqGjUX8ZNnLSOeku4FZun49tS72zm4K7NkNiods3rqzpOkcUTfMi8/wcoMfD4ac4p5lGHpUglY3wFpi9x1a5fndI9LWM/hGLYpijVKPVDd6rHsWPjqFPcGuL6DyhyFegBRqoSQKqKIOzMES+0ZL1Q+PaC0jT+gVt6szYBWCK59Lb5av0I/Uc5iyrclSOAdoNhQ/9x8hzzwqaTEC7bv9A0cxQnm7n3oPVtKsK+i5JA9Tv7V3/zXIN9U1RJ3snVqZbFAQixMz1ddsvyq8dDIKpn2VN+Kf6+i7INnKfzvSyS9nPMt0nFAU6icdfaC2tk7Cv1ElmtN7paw/10Pc7DMh6xpkz57+//bpeJoqQCDOubT1rQlLrYP8JfMJFVTI3YrpH+A3rggWxE07K+7W5qdHYls9W+pefapx37kACXew1m3UnaCURX7QtHoRgVlnEErKxFy+SvV8a4SFnTRZtzwdOXzP5+y9vD5Bx8kGyuw6FOuDJ2BUZmHF1wyYUmaYew6NkGjZ
+    username: AgAbxztU09X8qFtgXn4VP2LS8j3QJjWb48xqcnqjygFgsIxb5JlPG1bUuEevAFn1i4o3fHNL8vPrEImEh3kPai0B2tiM4HeajLy1me/btjMmop0gZUQeOqP2WrkFDQ3KcBwZkCVafzRMverlX+/afBKSXSYGIsvWrkVic3OdL+J9DFz9kTFANOrwYHV3+/v23brh39JN+E2KBZXUmuWEplAq+9EahX0zfv1Yf68rQPjMtWuVm0dLDsMqEj/iHswBFdym7DXv8n2I4/TjmsV3mK0CbJGGZfB8dSfGioQunTttVDLza2AiP13T1hDZDl5HYbuqMb/12wA9Tn3RwrCfaxA7eX8QYn8X4OOKkF3scLLSyrlXb7Tse5h9Sra6vWSNLdiZm0AX7e155ecBd4P2n+9aGpyH0dbfD3QE8jAxvzzCTMDBpNNXVsE4VdIPNoE5b/fYO/rR+As0EVWncuYgs5buuxS/sgD2HtBJWYLuo2aJxp5Ye95uJpR2P9WTZh4HOqPLhSjZNObuBz3IfSy/J1roDyeFp5O4V8iefhyS+sTyUz7LNb5aHNHnyAZRmrwnCXUL4ZIR5d7rR29IK8dtFCmi+q8xND8/bnc3iv4t5q5ctl61PI7Fd5E8xudPnIMRxh/TggI2zjVkUlfmSlISLkYJhBUNabXmoSJZyHrakaxZK+DzcWU65ciS6GsivblEj8hD22v+XLVTpRNp6qeqW8Z3i5s=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: lb-reporting
+    type: Opaque

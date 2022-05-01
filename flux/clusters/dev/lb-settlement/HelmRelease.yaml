@@ -1,0 +1,15 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: lhps
+  namespace: lb-settlement
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: ./charts/dev/lhps/
+      sourceRef:
+        kind: GitRepository
+        name: lhps
+        namespace: lb-settlement
+      interval: 3m

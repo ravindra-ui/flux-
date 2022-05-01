@@ -1,0 +1,15 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: lbrs
+  namespace: lb-reporting
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: ./charts/dev/lbrs/
+      sourceRef:
+        kind: GitRepository
+        name: lbrs
+        namespace: lb-reporting
+      interval: 3m

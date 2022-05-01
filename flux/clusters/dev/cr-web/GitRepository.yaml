@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: web
+  namespace: cr-web
+spec:
+  interval: 30s
+  ref:
+    branch: master
+  url: https://github.com/Tecore-Labs/cr-web
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: cr-web
+spec:
+  encryptedData:
+    password: AgC/S7ngn/9EMf+z5pFqCa8U0V/vLpe24E0pHJLddfCcGcb4twhITmr2qncltYVE4xZaCMNozsyKQ4PrVv/yUCLucpH5YX9ehGigCzyGlsLSD5B0uZy24EQZp+5bHLl4x2wa8LBFjZicGWk5BYA2b/YquSgt8/k4h5n5/B8AeR8tFlsvmFpfRGXIELz9ZezHckYT/mzGGLRcFZ9ZLkVenrnBju7oqxsak+Lb9sEnSDGeHdWFiIHOlX3TEihNMXjHT1SWyeu8aWi6syGb/lC6UUGMnkRpgUle6m1EK4LYopWZsu3rjmjtzsu6fYIQlrf7yKi6XoyZ7TDFWp1pvzTKKewAQsI7jp5qAbdKPKJYAnZNQaQNapZ5FRNNmn7kjiaiZLqTuphuyvy33MhukIL8HT6iizBf7Z047/47O7KUoIAvAZi875opEFv5lvqPDP1hQM4RyaysYggWpI0EgOlHbHAPFoWRCgaW5e3YZQQFiQIZZkFqvIKQebFqaj3dtgJHGxXhlLsSIuh/MhlDxnyizZR9b0xZekK1VzDckZvZIWwxsytRjgS2FOyEv4KnQKSBw9mdP1cq1uxJpAWVAd8vfXzAGMQ3DzdH27GKPvqu2AcyM7bR3NQM9ZTboPcwiar4vhWAMGQn3xiq0mfbGx42698OhmeJ/JORD949Zo+4I02KGvKQUaOyWxlq8V3GHg9VSDw0CjsyDhIx9cy1SIqNHY4iEHvDrCWXbbuMnSGBwHnsrlUQY/F4wU7y
+    username: AgCQyMe83t9vrDYY5lenDKbmbJYA3ihod/L371KKCH0OUPK7SOOT1f5rnDIqmMcHPxktax1yZ0jlSxOiLGjQk6n3geJr5994f8ihGslEOSOSgd58+pjdoOh8wWTTQ9ApbOud5Amwzh9l407ghdHDwnoKVFyOQFA6vk5yitY8dCt7yOc94MvpDbZ39LeInvMgHUwr8+ZoFZU1Aehyq5jqcVhdORZY5utwnOK6uUADYX4zutluDl+3vHVuFutGnhoCKMqWm96ZrSYpeuvz74O+fpcEjVwtoa9EFrn4/rZPneJJQrsq11tDRCBM49zCDPFfyY2sXuzuGTP/THrYwVeGgibQ8747A9YPEuU9Ttka8mq+44RMKCwLQ+sBeTXHN9o0Wcf8sCzBbxRbzVRb0iqjorqdow+fOspucjF+u2W34W6goxCMu+VHa7yZtKXYOMjNG0zelG6rXBH8rKfC6Vf8PWoo75V95kqzQLRBgUnNXt8n9CKzOp3O6mm3MHKODLkleiFci02pMwYk1tghyKUyEgGYyk4xlK0yl7jStnXmgv849hlEpC2tItqCy1nZJQ3buRuvXG5QNdn0tY4oOY4DhR9sCnfAmuMwuggfxWVg45KjUMAdKBNN4vKgAsL6h4mhS5SCYfS12yCNhOguNIl16wUnWjoptOEfFTLlsWm2s7hZQgissCgQ2mBCp2mnFMW4kGSy/fcKUqJzM0RYB4PpJguxpnM=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: cr-web
+    type: Opaque

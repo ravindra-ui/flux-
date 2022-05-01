@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: cpms
+  namespace: cr-post
+spec:
+  interval: 30s
+  ref:
+    branch: master
+  url: https://github.com/Tecore-Labs/cr-post-service
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: cr-post
+spec:
+  encryptedData:
+    password: AgCsG30yVchzCraLRgZ94zA7oOnQO1bXF863ZnMyAgjoMMLEQ4xKxMJystVPpIVj9vIGBIuvPMgr8BdbxJotH+VLn5A1hWFzdoUQTptPSuFfY+SLuVLIKWScnLPEEUt4YMAoTT3eEOpXr/mimjDDw/LEAdEN6SqqRqnpe2sg03VfonlOCdXYh5Fc9qFGl8MzHB80sY6fmPHq5jlE54A8RPl6J7/ob8CJLLsf7q/FbLnprbpZUbvVrYEuM/5v95LNZp4zShOIPbU8jZK+D0tFI5xBqertFNwNcyz4pqxF3K/uvUfKPaWLY+BhcvqYigs1xyWkHTzLoQFMUrqkrwLISI+Z/7dJzPAeRUX5uBEWwcbDp8aXKIObrkfpYAda8du5p2gt0dgwC4OmyvJ4SeMcZQuFXsRXCoqm2mlHm91z1LhFBd4jnfwN6N/co4xMqD316GRJReQwtdXJZpwruxFu/ViQUwmaIrop4n2DPqSQekdX3KoKthKeoEi44Aw5m/cDvSnkBrmM2NW20M2aUJndmpNGe9YIdIPAhlAYymnt7c8Ya45xgC8nqfVoEFOdvZNLi7MHo5XFB3P65PKsps8/VKXECLuVesXVH5q2T8t/atDOKDJBlf300MtC+xEjzYDW+vbjGryNZZJqTVMMO45lFLcwqXiYUdlI3tI+XMIqgfp3Re+vywttxM9oixaH0uVhR0PLhdrZXdwc+CucnV+BGWVLpyHFnQGVnDjz9Zlg6KsqS7V/Nh9D30Zj
+    username: AgAo78/DsElIre6Wvqzj960Mp7vj2Kdf7TQ2gXalsH4OxyIzcTCovgCOiFkXMntTshgV5VGuC8v4nEqMMsOwYpaRxPJ/d586/T/qoM/h3+1PBrGQfV21k7Y77siaCUYvCS73cCixxYRjRshm3vZ4/dMdQVMU2atw9s7NT339Xjr7e6oNJ9+x/N8eEUaIXqolVHkmdq51TfHP1JThQpj2Ai5hdO5c+i1Wu2V8fJAlUDhKuKlxmg3B7th+cNJGcvhdynuHHitPNaF7UTWZbN5pKBKzN3Y2GutB8pKIE6hQycDsXtDlddiC/3t8LhnRNq9G0mg2PzfBj4ANCxp6ARvaofQ2nZPkvHe2fsfU8DTin/YoTSfM3RLnH8Q+jvbAubzE+Hml8fvcf/ya2XnWC4Ta7ZG+0vNeyCiiBZ56qG3tN4QorOYD4OUkWHxOfdM7VTqeGmEgx5M+reRmDXBm2VvDhN3D8PRTK+n7WO12CXcrBs2UtWbIpGJbVEyho/IPw7pSoSq8BzBHfHOlLf1AFjeZsfmirKGxarwVBqblF95zaynoHSCeAblsPGVOcmlasaVe2Z7qPplIMO4mkLyQEzDHVLzIjsYpUK81a7fA71QRrA5TPekj9LjM+sYQsVnDfDbSoud7UC7iFkHS49Yrc+DXKQueFHrF7utGe/yTmkD0oCg4/va3ofL8cc5IFrZG/ZXAnl7iSSxCsJeIU8rKvRZdlcu8kzc=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: cr-post
+    type: Opaque

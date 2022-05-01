@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: webadmin
+  namespace: lb-webadmin
+spec:
+  interval: 3m
+  ref:
+    branch: dev
+  url: https://github.com/Tecore-Labs/lb-webteam
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: lb-webadmin
+spec:
+  encryptedData:
+    password: AgCezM5jAOy6GhlKCT9xY93e2nCfH1BFQ4QfdEjTT5p8R/Yw5708xqnWSksDqTHUicqe5p/D0Lu7NeVgz1O12sBKSQ0x8MG0NyZvbB3yGZj8pKs1bbxPDsdGgrLwPsYsAbhugvphcjqJlYsdwvGtvraRZDoR6xW5GMebPh8O32qFvllS6wDhRiQUJrU1roeaBQEuVFKhwBpXpKBeV/AQ9zcb2IOkl4DkmyF555g+Wd2AMLjpVibzKSdupJ78KUAp5c9np6j0IcKZQvs7pnzZA+Y3vBrN6aNrDytFfGMR3rhj/IFCHAdt7lLvBqWkgbhZt0cjgYjuZYDkwXMxpYXSGuPnJqFmYwa4J4RkLXtQihMRNzCIU4Bm281eqXJIrT2eo07cJLK1+Sx+Dt9Z9R2SfLM77JeQt+PSg4cWE26kde3I36fo6uMV1CvOj1VSHYBWBu+DKugtDRH9aDnEQ0XlcKd3NSJ/P7k2yM8d3E7IbDu5bWILuzgL3w18biA0AB0Tm05+c5nzMxPkrkpTDHSqXoge72J3UCHrOEylxM7kdB0HMB6E4UOnTyRkElqqa8I8huqxtVu1Wz21sEzWdWhtT3cWG78EN8nBZKd8kU7lefKxwKQM7NUmFmMC+EOg2A7xpUA4wQQddcPCtm9zpKkfBMoqCx1HAsBWyAUwwd3Z1YYsYAwyTZp9rW1ChlyKx20qK+XqYuGwLX1tBfl1iK9FD8Bs3cY1t6fnAQRryIYtaRS4tSz4bqDx413t
+    username: AgDVarZAFtUv3JDNDUO2RwbnOAM5HRba5dmhQlE3imsubxtL8MsrX6AN8Ug8hUJj1TYtD0R0afzeoZ4EAS1mkN2UUXg38psX/raCZ3Zth2rxnSTV9KvgWxy7eCsyJ7D51lQZErWhIOHwC9guReCqtpNw9l6UBlQwDZIY6El0BBM/Vs3btPRSCavWThu8AHbM7gnkpJqbhzUxq/9wOlHeIvFcSL+dneo9m+tRTIiFC21NWOGQaEMr+CXjX5brnduLWSv2dWBI8m3Nl7fq34fcc+mVb71Me3uBr9TrSvpTnXuWUJT0KI/t9jKooXSBEtcuV1nVzyAlbgsdQMF+SGK2T9XfDyOzqjxhvYxVxIWik8CQn2Ltr/rEEfjExWk2FvaN2sPzPAwAxJxU+JfF1sVvKRq2KpdB6LOYCJzoGOXZxLlRCkED2HjmwpKjQ35PHuNB363Rs/3an3Vabsnwb5peApW995FmxKalYeXWkNAS+R39kEuIPlI8EZ2qJyOugKlXn3ADVxJORA8xRDDgc/vv+jyS+/D0Ce9e3K3FWsWga3d1weU05aAi2YBHsJFO2ZKTgy05xLkHmrzKD8gE0lwIdHuhet0in/vpr1tn+Xj5JNi6YaAv8ccrEKl7HgiC064gPHU0nafWuJFanilCp8me5sNlIoRBmuzJUsRuUKKV16OeqtUfz/wYj5LJUMaPO3wX2I2l+AqAT6qQrWS0kAd4g/GA490=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: lb-webadmin
+    type: Opaque

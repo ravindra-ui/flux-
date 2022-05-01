@@ -1,0 +1,29 @@
+apiVersion: source.toolkit.fluxcd.io/v1beta1
+kind: GitRepository
+metadata:
+  name: lbms
+  namespace: lb-booking
+spec:
+  interval: 1m
+  ref:
+    branch: dev
+  url: https://github.com/Tecore-Labs/lb-booking-service
+  secretRef:
+    name: https-credentials
+---
+apiVersion: bitnami.com/v1alpha1
+kind: SealedSecret
+metadata:
+  creationTimestamp: null
+  name: https-credentials
+  namespace: lb-booking
+spec:
+  encryptedData:
+    password: AgDfxd/XGEw6CQf/uoU7BT6k1QxMVWV9XMEyRuEcEnboI5vRiqRqteOZcLwPqgFWxpBKovfzBpp2Z1yOYc+p136f0LoW+90T0uBjMFkNzlWlptDeU3d4OCixfZego39CXnpCsoPFR2Ye2AorRlik1O49WTTKZ9EYTlf4ba0G1xGX5eROA09Z4NXVJWWgxAHXT9ZvkVuUGN1xNmM6mM7DDi8ugwANxYTA3BFxAI4G61qusPzgSAfxYi925llse5Pvuceh++ZMSm2qvk/BF0tn0eR8z+EGmktWBzo9C5htPbAmX810iNQAk2G/hbfgrQg/2Wd9/QZIJjJOBs2KW02pyEaCXWOM0hv+VeElfCwzYWf/x7uJ9tSf61+undVpKWvMZ0mqLwaAHDSwfQfWX6K+fj32pd7J9Tqe+y8cZXf9MAtxM24o3LdPBhsFaVRAcPy0J4k7M3iJatyGIpWDkECrWYG49FAlmaCnnkKYesq92Yfd2X31jkuqUXU9IIIUlHzHT6YxrhTyfalcIc39RS5XAiPzcUfw1TMEhLyw8RlDeZlGl33Z3gV4yDLEuPJCnAUJteF/1dyisr9sAbsVBYJk36bPgiLdVF3N1rV5XdxFKIGIjS1h9aUZDnWEHGzYn1YjMO4BhXAQGZV/u7gQ1HwuudLwrWg+eFxX1K2lMs5I/A00HO64Nh1GdkRCORI4iweslQa3Mbj2G3U6If09J5Shvij4UptNfjBFqZg2hLLGHOEtSUOYyahgOnM+
+    username: AgAs/MkdE3f3oErilvMGUer4ixDPDQjNKH/B0WpxtDgECmm6GAVcSHzBL1F8djenLx16E6vEoppYQVzA7uIDo13r/+T/ukzPXezzBps1FExVPDpdr6dJIrIDeqDECTwk9agjT2GvHsfCg/44//1F009xua9Gy3GxD2szePtiyjmYChGhxUl389e++FWVtHvADR9hj2XRzj9Px7CFOlQAavY/TNMfyT9jHGv5ZihNDLQhuZrA2zMqjiw0cdsjp8tMUXkrqIFW7PQc/cRqnlnQaDWBkvI+be2i8XMzK6sehCA+5BMzlD87jnf502aKStH9vyIPqLJ9jAu/na5Sap/m616w5ChS17epMz2MF8+xj+jOBju8gHmxDaDEZL5AdDEHBMlN37FKCZK4AXG46cRQKQw96CSqm2hG4pPF+2AQF0aPxJbHuyXRF+7uI7lRsSJcjZTiBBiNxpQja53Z+bCQ7/Ufkb8zce1kMgI6KWAm5oOny2caVtEjYz3SnQ7HXFW3aOU2yBiNUIbYYraJ4YCYgy5XFReMKlUzOCHOz5sXh/PlTnrd9xJHh9QXqSirmDg7gNfmjbaAkD98sq7eZTG3uRrDTHbhKCxP0D7ltt0oTHqJ45Czb75Gf+knqYicHVHZWTollo345xUHvOlwz8arbCTi1j+TiUrtgawcYeHDmn9grk4ZU1D4BlsCARF9s2n1vMrKEvQ7YFoL5BiFiWQ57o8a6j4=
+  template:
+    metadata:
+      creationTimestamp: null
+      name: https-credentials
+      namespace: lb-booking
+    type: Opaque

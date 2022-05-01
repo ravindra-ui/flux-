@@ -1,0 +1,15 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: lqts
+  namespace: lb-tags
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: ./charts/dev/lqts/
+      sourceRef:
+        kind: GitRepository
+        name: lqts
+        namespace: lb-tags
+      interval: 3m

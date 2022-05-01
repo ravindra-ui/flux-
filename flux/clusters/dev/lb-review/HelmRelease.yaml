@@ -1,0 +1,15 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: lrms
+  namespace: lb-review
+spec:
+  interval: 4m
+  chart:
+    spec:
+      chart: ./charts/dev/lrms/
+      sourceRef:
+        kind: GitRepository
+        name: lrms
+        namespace: lb-review
+      interval: 2m
